@@ -307,25 +307,37 @@
     background-size: 20px 20px;
   }
 
-  /* AI Neural Network Pattern */
+  /* Enhanced AI Neural Network Pattern */
   .bg-ai-neural {
     background-image: 
-      radial-gradient(circle at 25% 25%, rgba(102, 126, 234, 0.02) 0%, transparent 30%),
-      radial-gradient(circle at 75% 75%, rgba(123, 97, 255, 0.015) 0%, transparent 30%),
-      radial-gradient(circle at 75% 25%, rgba(94, 106, 210, 0.01) 0%, transparent 30%),
-      radial-gradient(circle at 25% 75%, rgba(118, 75, 162, 0.01) 0%, transparent 30%),
-      linear-gradient(45deg, transparent 48%, rgba(102, 126, 234, 0.005) 49%, rgba(102, 126, 234, 0.005) 51%, transparent 52%),
-      linear-gradient(-45deg, transparent 48%, rgba(123, 97, 255, 0.005) 49%, rgba(123, 97, 255, 0.005) 51%, transparent 52%);
-    background-size: 80px 80px, 120px 120px, 100px 100px, 90px 90px, 40px 40px, 60px 60px;
+      radial-gradient(circle at 25% 25%, rgba(94, 106, 210, 0.15) 0%, transparent 30%),
+      radial-gradient(circle at 75% 75%, rgba(123, 97, 255, 0.12) 0%, transparent 30%),
+      radial-gradient(circle at 75% 25%, rgba(183, 148, 244, 0.1) 0%, transparent 30%),
+      radial-gradient(circle at 25% 75%, rgba(255, 255, 255, 0.08) 0%, transparent 30%),
+      linear-gradient(45deg, transparent 48%, rgba(94, 106, 210, 0.05) 49%, rgba(94, 106, 210, 0.05) 51%, transparent 52%),
+      linear-gradient(-45deg, transparent 48%, rgba(123, 97, 255, 0.05) 49%, rgba(123, 97, 255, 0.05) 51%, transparent 52%);
+    background-size: 120px 120px, 180px 180px, 150px 150px, 200px 200px, 60px 60px, 80px 80px;
+    animation: neuralPulse 15s ease-in-out infinite;
   }
 
-  /* AI Circuit Pattern */
+  /* Enhanced AI Circuit Pattern */
   .bg-ai-circuit {
     background-image: 
-      linear-gradient(90deg, rgba(102, 126, 234, 0.02) 1px, transparent 1px),
-      linear-gradient(180deg, rgba(102, 126, 234, 0.02) 1px, transparent 1px),
-      radial-gradient(circle at 20px 20px, rgba(102, 126, 234, 0.03) 2px, transparent 2px);
-    background-size: 40px 40px, 40px 40px, 40px 40px;
+      linear-gradient(90deg, rgba(94, 106, 210, 0.1) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(123, 97, 255, 0.08) 1px, transparent 1px),
+      radial-gradient(circle at 30px 30px, rgba(255, 255, 255, 0.12) 2px, transparent 2px),
+      radial-gradient(circle at 60px 60px, rgba(183, 148, 244, 0.1) 1px, transparent 1px);
+    background-size: 60px 60px, 60px 60px, 60px 60px, 90px 90px;
+    animation: circuitFlow 12s linear infinite;
+  }
+
+  /* Interactive hover effects for sections */
+  .bg-ai-neural:hover {
+    animation-duration: 8s;
+  }
+
+  .bg-ai-circuit:hover {
+    animation-duration: 6s;
   }
 
   .bg-aurora {
@@ -419,12 +431,46 @@
     }
   }
 
-  @keyframes matrixRain {
+  @keyframes aiParticleFlow {
     0% {
-      transform: translateY(-100px);
+      transform: translate(0, 0) rotate(0deg);
+      opacity: 0.8;
+    }
+    25% {
+      transform: translate(10px, -5px) rotate(90deg);
+      opacity: 1;
+    }
+    50% {
+      transform: translate(5px, 10px) rotate(180deg);
+      opacity: 0.9;
+    }
+    75% {
+      transform: translate(-5px, 5px) rotate(270deg);
+      opacity: 1;
     }
     100% {
-      transform: translateY(100vh);
+      transform: translate(0, 0) rotate(360deg);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes neuralPulse {
+    0%, 100% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes circuitFlow {
+    0% {
+      background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+    }
+    100% {
+      background-position: 60px 60px, -60px 60px, 30px 30px, 90px -90px;
     }
   }
 
@@ -494,62 +540,83 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Temporary disable background effects to fix homepage visibility */
-/* 
+/* AI-themed background inspired by Pinterest designs */
 body::before {
   content: '';
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  background: 
-    repeating-linear-gradient(
-      0deg,
-      transparent 0px,
-      transparent 18px,
-      rgba(255, 255, 255, 0.4) 19px,
-      rgba(255, 255, 255, 0.4) 21px,
-      transparent 22px,
-      transparent 40px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent 0px,
-      transparent 18px,
-      rgba(255, 255, 255, 0.3) 19px,
-      rgba(255, 255, 255, 0.3) 21px,
-      transparent 22px,
-      transparent 40px
-    );
-  animation: matrixRain 6s linear infinite;
+  height: 100%;
+  background-image: 
+    /* Floating AI particles */
+    radial-gradient(circle 2px at 20% 30%, rgba(94, 106, 210, 0.3), transparent),
+    radial-gradient(circle 3px at 40% 70%, rgba(123, 97, 255, 0.2), transparent),
+    radial-gradient(circle 1px at 90% 40%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(circle 2px at 130% 80%, rgba(183, 148, 244, 0.25), transparent),
+    radial-gradient(circle 1px at 160% 30%, rgba(255, 255, 255, 0.3), transparent),
+    /* Neural network connections */
+    linear-gradient(45deg, transparent 48%, rgba(94, 106, 210, 0.1) 49%, rgba(94, 106, 210, 0.1) 51%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, rgba(123, 97, 255, 0.08) 49%, rgba(123, 97, 255, 0.08) 51%, transparent 52%),
+    /* Data stream lines */
+    linear-gradient(0deg, transparent 0%, transparent 80%, rgba(255, 255, 255, 0.1) 80%, rgba(255, 255, 255, 0.1) 82%, transparent 82%);
+  background-size: 
+    200px 200px,
+    300px 300px,
+    150px 150px,
+    400px 400px,
+    250px 250px,
+    100px 100px,
+    80px 80px,
+    50px 100px;
+  background-position: 
+    0px 0px,
+    50px 50px,
+    100px 100px,
+    150px 150px,
+    200px 200px,
+    0px 0px,
+    25px 25px,
+    0px 0px;
+  animation: aiParticleFlow 20s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
+  will-change: transform;
 }
 
+/* Second layer for depth and movement */
 body::after {
   content: '';
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  background: 
-    repeating-linear-gradient(
-      0deg,
-      transparent 0px,
-      transparent 25px,
-      rgba(255, 255, 255, 0.2) 26px,
-      rgba(255, 255, 255, 0.2) 28px,
-      transparent 29px,
-      transparent 60px
-    );
-  animation: matrixRain 10s linear infinite;
-  animation-delay: -3s;
+  height: 100%;
+  background-image: 
+    /* Glowing orbs */
+    radial-gradient(circle 4px at 60% 20%, rgba(94, 106, 210, 0.15), transparent),
+    radial-gradient(circle 2px at 80% 60%, rgba(255, 255, 255, 0.2), transparent),
+    radial-gradient(circle 3px at 30% 80%, rgba(123, 97, 255, 0.12), transparent),
+    /* Subtle grid overlay */
+    linear-gradient(90deg, transparent 98%, rgba(255, 255, 255, 0.02) 100%),
+    linear-gradient(0deg, transparent 98%, rgba(255, 255, 255, 0.02) 100%);
+  background-size: 
+    350px 350px,
+    200px 200px,
+    280px 280px,
+    40px 40px,
+    40px 40px;
+  background-position: 
+    -50px -50px,
+    100px 50px,
+    200px 150px,
+    0px 0px,
+    0px 0px;
+  animation: aiParticleFlow 30s ease-in-out infinite reverse;
   pointer-events: none;
   z-index: -2;
+  will-change: transform;
 }
-*/
 
 /* Performance optimizations */
 img,
