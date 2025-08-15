@@ -77,18 +77,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
   return (
     <section className={containerStyles}>
-      {/* Background Gradient Effects */}
+      {/* Subtle background accent - natural integration */}
       {backgroundGradient && (
         <>
-          {/* Main gradient orb */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-b from-accent-primary/20 via-accent-secondary/10 to-transparent blur-3xl animate-pulse-glow" />
-          
-          {/* Additional gradient effects */}
-          <div className="absolute top-20 left-0 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-gradient-aurora-1 to-transparent blur-3xl opacity-30 animate-aurora" />
-          <div className="absolute top-40 right-0 w-[400px] h-[400px] rounded-full bg-gradient-to-bl from-gradient-aurora-2 to-transparent blur-3xl opacity-30 animate-aurora" style={{ animationDelay: '2s' }} />
-          
-          {/* Grid pattern overlay */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:64px_64px]" />
+          {/* Very subtle gradient accent */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] rounded-full bg-gradient-to-b from-accent-primary/5 to-transparent blur-3xl opacity-50" />
         </>
       )}
 
