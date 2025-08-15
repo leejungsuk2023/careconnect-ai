@@ -164,26 +164,26 @@ const HomePage: React.FC = () => {
 
           {/* Solutions Section */}
           <AnimatedSection>
-            <section className="px-6 py-24 lg:px-8 bg-grid-pattern relative" aria-labelledby="solutions-heading">
-              <div className="mx-auto max-w-7xl">
+            <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24 bg-grid-pattern relative" aria-labelledby="solutions-heading">
+              <div className="mx-auto max-w-7xl px-4 sm:px-0">
                 {/* Section Header */}
-                <header className="text-center mb-16">
+                <header className="text-center mb-12 sm:mb-16">
                   <Badge variant="primary" size="sm" dot pulse className="mb-4">
                     AI Solutions
                   </Badge>
                   <h2 
                     id="solutions-heading" 
-                    className="text-4xl lg:text-5xl font-bold text-text-primary mb-4"
+                    className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-text-primary mb-4 px-4 sm:px-0"
                     dangerouslySetInnerHTML={{ __html: "병원 성장의 3단계,<br/>AI로 해결" }}
                   />
-                  <p className="text-lg text-text-secondary max-w-3xl mx-auto">
+                  <p className="text-base sm:text-lg text-text-secondary max-w-2xl lg:max-w-3xl mx-auto px-4 sm:px-0">
                     콘텐츠 생성부터 마케팅 실행, 환자 소통까지 모든 단계를 AI가 자동화하고 최적화합니다.
                   </p>
                 </header>
 
                 {/* Solution Cards */}
                 <motion.div 
-                  className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                  className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8"
                   variants={staggerContainerVariants}
                   initial="hidden"
                   whileInView="visible"
@@ -260,29 +260,29 @@ const HomePage: React.FC = () => {
           <AnimatedSection>
             <section 
               id="growth-calculator" 
-              className="px-6 py-24 lg:px-8 bg-gradient-to-b from-background-primary to-background-secondary bg-dot-pattern relative"
+              className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24 bg-gradient-to-b from-background-primary to-background-secondary bg-dot-pattern relative"
               aria-labelledby="calculator-heading"
             >
-              <div className="mx-auto max-w-7xl">
+              <div className="mx-auto max-w-7xl px-4 sm:px-0">
                 <Card variant="gradient" className="overflow-visible">
-                  <header className="text-center mb-12">
+                  <header className="text-center mb-8 sm:mb-12">
                     <Badge variant="success" size="sm" dot pulse className="mb-4">
                       ROI Calculator
                     </Badge>
                     <h2 
                       id="calculator-heading" 
-                      className="text-4xl lg:text-5xl font-bold text-text-primary mb-4"
+                      className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-text-primary mb-4 px-4 sm:px-0"
                       dangerouslySetInnerHTML={{ __html: "AI도입 후 우리병원의,<br/>예상성장률은?" }}
                     />
                     <p 
-                      className="text-lg text-text-secondary max-w-3xl mx-auto"
+                      className="text-base sm:text-lg text-text-secondary max-w-2xl lg:max-w-3xl mx-auto px-4 sm:px-0"
                       dangerouslySetInnerHTML={{ __html: "간단한 정보입력으로<br/>CareConnect AI 도입 시 예상되는 성과를 확인해보세요" }}
                     />
                   </header>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                     {/* Input Section */}
-                    <div className="space-y-6" role="form" aria-label="병원 정보 입력 폼">
+                    <div className="space-y-4 sm:space-y-6 px-4 sm:px-0" role="form" aria-label="병원 정보 입력 폼">
                       <Input
                         label="월평균 신규 환자 수"
                         type="number"
@@ -325,13 +325,14 @@ const HomePage: React.FC = () => {
                         }
                       />
 
-                      <div className="flex gap-4">
+                      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                         <Button 
                           variant="primary" 
                           size="lg" 
                           fullWidth
                           href="/calculator"
                           aria-describedby="calculator-result"
+                          className="text-sm sm:text-base"
                         >
                           상세결과확인하기
                         </Button>
@@ -344,6 +345,7 @@ const HomePage: React.FC = () => {
                             setMarketingCost('');
                           }}
                           aria-label="입력 필드 초기화"
+                          className="sm:w-auto w-full text-sm sm:text-base"
                         >
                           초기화
                         </Button>
@@ -432,22 +434,22 @@ const HomePage: React.FC = () => {
 
           {/* Success Stories Section */}
           <AnimatedSection>
-            <section className="px-6 py-24 lg:px-8 bg-floating-orbs relative" aria-labelledby="success-stories-heading">
-              <div className="mx-auto max-w-7xl">
-                <header className="text-center mb-16">
+            <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24 bg-floating-orbs relative" aria-labelledby="success-stories-heading">
+              <div className="mx-auto max-w-7xl px-4 sm:px-0">
+                <header className="text-center mb-12 sm:mb-16">
                   <Badge variant="primary" size="sm" dot className="mb-4">
                     Success Stories
                   </Badge>
-                  <h2 id="success-stories-heading" className="text-4xl lg:text-5xl font-bold text-text-primary mb-4">
+                  <h2 id="success-stories-heading" className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-text-primary mb-4 px-4 sm:px-0">
                     성공스토리
                   </h2>
-                  <p className="text-lg text-text-secondary max-w-3xl mx-auto">
+                  <p className="text-base sm:text-lg text-text-secondary max-w-2xl lg:max-w-3xl mx-auto px-4 sm:px-0">
                     CareConnect AI와 함께 성장한 병원들의 실제 사례를 확인해보세요
                   </p>
                 </header>
 
                 <motion.div 
-                  className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12"
+                  className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12"
                   variants={staggerContainerVariants}
                   initial="hidden"
                   whileInView="visible"
@@ -489,24 +491,25 @@ const HomePage: React.FC = () => {
 
           {/* Final CTA Section */}
           <AnimatedSection>
-            <section className="px-6 py-24 lg:px-8 bg-gradient-to-t from-background-secondary to-background-primary" aria-labelledby="cta-heading">
-              <div className="mx-auto max-w-4xl text-center">
-                <h2 id="cta-heading" className="text-3xl lg:text-4xl font-bold text-text-primary mb-4">
+            <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24 bg-gradient-to-t from-background-secondary to-background-primary" aria-labelledby="cta-heading">
+              <div className="mx-auto max-w-4xl text-center px-4 sm:px-0">
+                <h2 id="cta-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold text-text-primary mb-4">
                   지금 바로 시작하세요
                 </h2>
-                <p className="text-lg text-text-secondary mb-8">
+                <p className="text-base sm:text-lg text-text-secondary mb-6 sm:mb-8">
                   AI와 함께 병원 마케팅의 새로운 가능성을 경험해보세요.
                 </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
                   <Button 
                     variant="primary" 
                     size="lg" 
                     onClick={() => setIsDemoModalOpen(true)}
                     aria-describedby="demo-description"
+                    className="w-full sm:w-auto text-sm sm:text-base"
                   >
                     데모신청하기
                   </Button>
-                  <Button variant="secondary" size="lg" href="/pricing">
+                  <Button variant="secondary" size="lg" href="/pricing" className="w-full sm:w-auto text-sm sm:text-base">
                     요금제 보기
                   </Button>
                 </div>

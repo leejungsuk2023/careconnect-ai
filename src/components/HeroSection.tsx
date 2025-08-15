@@ -37,7 +37,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 }) => {
   const containerStyles = cn(
     'relative w-full overflow-hidden',
-    'px-6 py-24 sm:py-32 lg:px-8',
+    'px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24',
     className
   );
 
@@ -47,32 +47,32 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   );
 
   const titleStyles = cn(
-    'text-5xl sm:text-6xl lg:text-display font-bold tracking-tight',
+    'text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight',
     'text-transparent bg-clip-text',
     'bg-gradient-to-b from-text-primary to-text-secondary',
-    'animate-fade-in'
+    'animate-fade-in leading-tight'
   );
 
   const subtitleStyles = cn(
-    'mt-6 text-lg sm:text-xl lg:text-2xl',
+    'mt-4 text-base sm:text-lg md:text-xl lg:text-2xl',
     'text-text-secondary',
-    'max-w-3xl',
+    'max-w-2xl lg:max-w-3xl',
     centered && 'mx-auto',
-    'animate-slide-up'
+    'animate-slide-up px-4 sm:px-0'
   );
 
   const descriptionStyles = cn(
-    'mt-4 text-base lg:text-lg',
+    'mt-3 text-sm sm:text-base lg:text-lg',
     'text-text-muted',
-    'max-w-2xl',
+    'max-w-xl lg:max-w-2xl',
     centered && 'mx-auto',
-    'animate-slide-up'
+    'animate-slide-up px-4 sm:px-0'
   );
 
   const actionsStyles = cn(
-    'mt-10 flex items-center gap-4',
+    'mt-6 sm:mt-8 lg:mt-10 flex flex-col sm:flex-row items-center gap-3 sm:gap-4',
     centered && 'justify-center',
-    'animate-slide-up'
+    'animate-slide-up px-4 sm:px-0'
   );
 
   return (
@@ -135,7 +135,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 size="lg"
                 icon={primaryAction.icon}
                 onClick={primaryAction.onClick}
-                className="min-w-[160px]"
+                className="w-full sm:w-auto min-w-[160px] text-sm sm:text-base"
               >
                 {primaryAction.label}
               </Button>
@@ -146,7 +146,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 size="lg"
                 icon={secondaryAction.icon}
                 onClick={secondaryAction.onClick}
-                className="min-w-[160px]"
+                className="w-full sm:w-auto min-w-[160px] text-sm sm:text-base"
               >
                 {secondaryAction.label}
               </Button>
