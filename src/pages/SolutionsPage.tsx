@@ -150,15 +150,15 @@ const SolutionsPage: React.FC = () => {
       <NavigationBar links={navLinks} />
       
       {/* Page Header */}
-      <section className="pt-32 pb-16 px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl text-center">
+      <section className="pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl text-center px-4 sm:px-0">
           <Badge variant="primary" size="sm" dot pulse className="mb-6">
             Our Solutions
           </Badge>
-          <h1 className="text-5xl lg:text-6xl font-bold text-text-primary mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-text-primary mb-4 sm:mb-6">
             우리의 솔루션이 문제를 해결하는 방법
           </h1>
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-text-secondary max-w-2xl lg:max-w-3xl mx-auto">
             AI 기술을 활용하여 병원 마케팅의 모든 단계를 혁신합니다.
             데이터 기반의 스마트한 솔루션으로 실질적인 성과를 만들어냅니다.
           </p>
@@ -167,10 +167,10 @@ const SolutionsPage: React.FC = () => {
 
       {/* Solutions Detail Sections */}
       {solutions.map((solution, index) => (
-        <section key={solution.id} className="px-6 py-24 lg:px-8">
-          <div className="mx-auto max-w-7xl">
+        <section key={solution.id} className="px-4 sm:px-6 py-16 sm:py-20 lg:py-24 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 sm:px-0">
             <div className={cn(
-              'grid grid-cols-1 lg:grid-cols-2 gap-16 items-center',
+              'grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center',
               index % 2 === 1 && 'lg:grid-flow-dense'
             )}>
               {/* Content */}
@@ -182,13 +182,13 @@ const SolutionsPage: React.FC = () => {
                   </Badge>
                 </div>
 
-                <h2 className="text-4xl lg:text-5xl font-bold text-text-primary mb-4">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-text-primary mb-3 sm:mb-4">
                   {solution.title}
                 </h2>
-                <p className="text-xl text-accent-primary mb-6">
+                <p className="text-base sm:text-lg lg:text-xl text-accent-primary mb-4 sm:mb-6">
                   {solution.subtitle}
                 </p>
-                <p className="text-lg text-text-secondary mb-8">
+                <p className="text-sm sm:text-base lg:text-lg text-text-secondary mb-6 sm:mb-8">
                   {solution.description}
                 </p>
 
@@ -214,7 +214,7 @@ const SolutionsPage: React.FC = () => {
                 </div>
 
                 {/* CTA */}
-                <Button variant="primary" size="lg" className="min-w-[180px]">
+                <Button variant="primary" size="lg" className="w-full sm:w-auto min-w-[180px] text-sm sm:text-base">
                   자세히 보기
                 </Button>
               </div>

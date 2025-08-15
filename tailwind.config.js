@@ -53,6 +53,14 @@ module.exports = {
             1: 'rgba(94, 106, 210, 0.2)',
             2: 'rgba(123, 97, 255, 0.15)',
             3: 'rgba(183, 148, 244, 0.1)',
+          },
+          // AI 테마 그라데이션
+          ai: {
+            primary: '#667eea',
+            secondary: '#764ba2',
+            tertiary: '#f093fb',
+            electric: '#4facfe',
+            neon: '#43e97b',
           }
         }
       },
@@ -131,6 +139,9 @@ module.exports = {
         'slide-up': 'slideUp 0.3s ease-out',
         'pulse-glow': 'pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'aurora': 'aurora 8s ease-in-out infinite',
+        'text-shimmer': 'textShimmer 2.5s ease-in-out infinite',
+        'glow-pulse': 'glowPulse 2s ease-in-out infinite',
+        'float': 'float 3s ease-in-out infinite',
       },
       
       keyframes: {
@@ -149,6 +160,18 @@ module.exports = {
         aurora: {
           '0%, 100%': { transform: 'rotate(0deg) scale(1)' },
           '50%': { transform: 'rotate(180deg) scale(1.1)' },
+        },
+        textShimmer: {
+          '0%': { backgroundPosition: '-200% center' },
+          '100%': { backgroundPosition: '200% center' },
+        },
+        glowPulse: {
+          '0%, 100%': { textShadow: '0 0 5px rgba(102, 126, 234, 0.5), 0 0 10px rgba(102, 126, 234, 0.3), 0 0 15px rgba(102, 126, 234, 0.2)' },
+          '50%': { textShadow: '0 0 10px rgba(102, 126, 234, 0.8), 0 0 20px rgba(102, 126, 234, 0.6), 0 0 30px rgba(102, 126, 234, 0.4)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-5px)' },
         },
       },
       
