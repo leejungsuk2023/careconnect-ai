@@ -66,19 +66,19 @@ const HomePage: React.FC = () => {
 
   const successStories = [
     {
-      hospital: '서울대학교병원',
+      hospital: 'A성형외과',
       logo: '🏥',
       metric: '외국인 환자 문의 300% 증가',
       description: 'AI 컨버세이션 도입 후 3개월 만에 달성',
     },
     {
-      hospital: '세브란스병원',
+      hospital: 'B피부과',
       logo: '🏥',
       metric: '마케팅 비용 45% 절감',
       description: 'AI 퍼포먼스 마케팅으로 효율 극대화',
     },
     {
-      hospital: '삼성서울병원',
+      hospital: 'C피부과',
       logo: '🏥',
       metric: '콘텐츠 제작 시간 90% 단축',
       description: 'AI 콘텐츠 스튜디오로 업무 자동화',
@@ -141,11 +141,11 @@ const HomePage: React.FC = () => {
               <motion.div variants={fadeInUpVariants}>
                 <HeroSection
                   badge="새로운 의료 마케팅의 시작"
-                  title="환자는 더 가까이, 병원은 더 똑똑하게"
-                  subtitle="병원 성장의 모든 과정, CareConnect AI가 함께합니다."
-                  description="AI 기술로 의료 마케팅을 혁신하고, 환자와의 소통을 개선하며, 병원의 지속 가능한 성장을 지원합니다."
+                  title="환자는 더 가까이,<br/>병원은 더 똑똑하게"
+                  subtitle="병원 성장의 모든 과정 CareConnect AI가 함께합니다."
+                  description="AI 기술로 의료 마케팅을 혁신하고,<br/>환자와의 소통을 개선하며, 병원의 지속 가능한 성장을 지원합니다."
                   primaryAction={{
-                    label: '데모 신청하기',
+                    label: '데모신청하기',
                     onClick: () => setIsDemoModalOpen(true),
                     icon: (
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -154,7 +154,7 @@ const HomePage: React.FC = () => {
                     ),
                   }}
                   secondaryAction={{
-                    label: '성장률 계산해보기',
+                    label: '성장률계산해보기',
                     onClick: () => scrollToSection('growth-calculator'),
                   }}
                 />
@@ -171,9 +171,11 @@ const HomePage: React.FC = () => {
                   <Badge variant="primary" size="sm" dot pulse className="mb-4">
                     AI Solutions
                   </Badge>
-                  <h2 id="solutions-heading" className="text-4xl lg:text-5xl font-bold text-text-primary mb-4">
-                    병원 성장의 3단계, AI로 해결
-                  </h2>
+                  <h2 
+                    id="solutions-heading" 
+                    className="text-4xl lg:text-5xl font-bold text-text-primary mb-4"
+                    dangerouslySetInnerHTML={{ __html: "병원 성장의 3단계,<br/>AI로 해결" }}
+                  />
                   <p className="text-lg text-text-secondary max-w-3xl mx-auto">
                     콘텐츠 생성부터 마케팅 실행, 환자 소통까지 모든 단계를 AI가 자동화하고 최적화합니다.
                   </p>
@@ -267,12 +269,15 @@ const HomePage: React.FC = () => {
                     <Badge variant="success" size="sm" dot pulse className="mb-4">
                       ROI Calculator
                     </Badge>
-                    <h2 id="calculator-heading" className="text-4xl lg:text-5xl font-bold text-text-primary mb-4">
-                      AI 도입 후, 우리 병원의 예상 성장률은?
-                    </h2>
-                    <p className="text-lg text-text-secondary max-w-3xl mx-auto">
-                      간단한 정보 입력으로 CareConnect AI 도입 시 예상되는 성과를 확인해보세요
-                    </p>
+                    <h2 
+                      id="calculator-heading" 
+                      className="text-4xl lg:text-5xl font-bold text-text-primary mb-4"
+                      dangerouslySetInnerHTML={{ __html: "AI도입 후 우리병원의,<br/>예상성장률은?" }}
+                    />
+                    <p 
+                      className="text-lg text-text-secondary max-w-3xl mx-auto"
+                      dangerouslySetInnerHTML={{ __html: "간단한 정보입력으로<br/>CareConnect AI 도입 시 예상되는 성과를 확인해보세요" }}
+                    />
                   </header>
 
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -328,7 +333,7 @@ const HomePage: React.FC = () => {
                           href="/calculator"
                           aria-describedby="calculator-result"
                         >
-                          상세 결과 확인하기
+                          상세결과확인하기
                         </Button>
                         <Button 
                           variant="secondary" 
@@ -434,7 +439,7 @@ const HomePage: React.FC = () => {
                     Success Stories
                   </Badge>
                   <h2 id="success-stories-heading" className="text-4xl lg:text-5xl font-bold text-text-primary mb-4">
-                    이미 성공을 경험한 병원들
+                    성공스토리
                   </h2>
                   <p className="text-lg text-text-secondary max-w-3xl mx-auto">
                     CareConnect AI와 함께 성장한 병원들의 실제 사례를 확인해보세요
@@ -499,7 +504,7 @@ const HomePage: React.FC = () => {
                     onClick={() => setIsDemoModalOpen(true)}
                     aria-describedby="demo-description"
                   >
-                    데모 신청하기
+                    데모신청하기
                   </Button>
                   <Button variant="secondary" size="lg" href="/pricing">
                     요금제 보기

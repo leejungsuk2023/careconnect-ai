@@ -105,30 +105,25 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         )}
 
         {/* Title */}
-        <h1 className={titleStyles}>
-          {title.split(' ').map((word, index) => (
-            <span
-              key={index}
-              className="inline-block"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              {word}{' '}
-            </span>
-          ))}
-        </h1>
+        <h1 
+          className={titleStyles}
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
 
         {/* Subtitle */}
         {subtitle && (
-          <p className={subtitleStyles}>
-            {subtitle}
-          </p>
+          <p 
+            className={subtitleStyles}
+            dangerouslySetInnerHTML={{ __html: subtitle }}
+          />
         )}
 
         {/* Description */}
         {description && (
-          <p className={descriptionStyles}>
-            {description}
-          </p>
+          <p 
+            className={descriptionStyles}
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
         )}
 
         {/* Actions */}
