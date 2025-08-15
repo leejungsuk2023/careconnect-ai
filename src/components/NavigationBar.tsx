@@ -84,24 +84,10 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
     sticky && 'fixed top-0 left-0 right-0'
   );
 
-  const containerStyles = cn(
-    'px-6 lg:px-8',
-    'transition-all duration-300',
-    transparent && !scrolled ? [
-      'bg-transparent',
-      'border-b border-transparent',
-    ] : [
-      'bg-background-primary/80',
-      'backdrop-blur-xl backdrop-saturate-150',
-      'border-b border-border-primary',
-      'shadow-lg shadow-black/5',
-    ]
-  );
-
   return (
     <motion.nav className={baseStyles}>
       <motion.div 
-        className="px-6 lg:px-8 transition-all duration-300 border-b border-border-primary"
+        className="px-4 sm:px-6 lg:px-8 transition-all duration-300 border-b border-border-primary"
         style={{
           backgroundColor: `rgba(13, 14, 20, ${backgroundOpacity.get()})`,
           backdropFilter: `blur(${backdropBlur.get()}px)`,
@@ -114,15 +100,15 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
               {logo || (
                 <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent-primary to-accent-secondary" />
-                  <span className="text-xl font-semibold text-text-primary">
+                  <span className="text-lg sm:text-xl font-semibold text-text-primary">
                     CareConnect AI
                   </span>
                 </Link>
               )}
             </div>
 
-            {/* Navigation Links */}
-            <div className="hidden md:flex md:items-center md:gap-1">
+            {/* Navigation Links - Hidden on Mobile */}
+            <div className="hidden lg:flex lg:items-center lg:gap-1">
               {links.map((link, index) => (
                 <Link
                   key={index}
@@ -146,55 +132,68 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
               ))}
             </div>
 
-            {/* Actions */}
-            <div className="flex items-center gap-3">
-              {actions || (
-                <>
-                  <Button variant="tertiary" size="sm">
-                    Sign In
-                  </Button>
-                  <Button variant="primary" size="sm">
-                    Get Started
-                  </Button>
-                </>
-              )}
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button 
-              className="md:hidden p-2 rounded-lg hover:bg-background-secondary transition-colors"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle mobile menu"
-            >
-              <svg
-                className="w-6 h-6 text-text-primary"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {mobileMenuOpen ? (
-                  <path d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path d="M4 6h16M4 12h16M4 18h16" />
+            {/* Actions & Mobile Menu */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              {/* Desktop Actions */}
+              <div className="hidden lg:flex items-center gap-3">
+                {actions || (
+                  <>
+                    <Button variant="tertiary" size="sm">
+                      Sign In
+                    </Button>
+                    <Button variant="primary" size="sm">
+                      Get Started
+                    </Button>
+                  </>
                 )}
-              </svg>
-            </button>
+              </div>
+              
+              {/* Mobile Actions - Always Visible */}
+              <div className="lg:hidden flex items-center gap-1.5 sm:gap-2">
+                <Button variant="tertiary" size="sm" className="text-xs px-2 py-1.5 sm:px-3">
+                  로그인
+                </Button>
+                <Button variant="primary" size="sm" className="text-xs px-2 py-1.5 sm:px-3">
+                  시작하기
+                </Button>
+              </div>
+
+              {/* Mobile Menu Button */}
+              <button 
+                className="lg:hidden p-2 rounded-lg hover:bg-background-secondary transition-colors flex-shrink-0"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle mobile menu"
+              >
+                <svg
+                  className="w-5 h-5 text-text-primary"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  {mobileMenuOpen ? (
+                    <path d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
         
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <motion.div 
-            className="md:hidden border-t border-border-primary bg-background-primary/98 backdrop-blur-xl shadow-lg"
+            className="lg:hidden border-t border-border-primary bg-background-primary/98 backdrop-blur-xl shadow-lg"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <div className="px-6 py-4 space-y-2">
+            <div className="px-4 py-4 space-y-2">
               {links.map((link, index) => (
                 <Link
                   key={index}
@@ -213,14 +212,11 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
                 </Link>
               ))}
               
-              {/* Mobile Actions */}
-              <div className="pt-4 space-y-2">
-                <Button variant="tertiary" size="sm" fullWidth>
-                  로그인
-                </Button>
-                <Button variant="primary" size="sm" fullWidth>
-                  시작하기
-                </Button>
+              {/* Mobile Navigation Only - Actions are in header */}
+              <div className="pt-4 border-t border-border-primary">
+                <p className="text-xs text-text-muted text-center">
+                  메뉴를 선택하세요
+                </p>
               </div>
             </div>
           </motion.div>

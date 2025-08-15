@@ -132,7 +132,7 @@ const HomePage: React.FC = () => {
           {/* Hero Section */}
           <header>
             <motion.section 
-              className="pt-16"
+              className="pt-20 sm:pt-24"
               initial="hidden"
               animate="visible"
               variants={staggerContainerVariants}
