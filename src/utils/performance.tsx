@@ -1,4 +1,5 @@
 // Performance optimization utilities
+import React from 'react';
 
 // Dynamic import wrapper for lazy loading components
 export const lazyImport = <T extends Record<string, any>>(
@@ -178,5 +179,3 @@ export const generateResourceHints = (urls: string[]) => {
     return link;
   });
 };
-
-import React from 'react';

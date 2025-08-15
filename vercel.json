@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
+  "framework": "nextjs",
   "functions": {
-    "pages/api/**/*.ts": {
+    "src/pages/api/**/*.ts": {
       "runtime": "nodejs18.x"
     }
   },
