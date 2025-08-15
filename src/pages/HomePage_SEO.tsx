@@ -173,10 +173,7 @@ const HomePage: React.FC = () => {
                   </Badge>
                   <h2 
                     id="solutions-heading" 
-                    className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 px-4 sm:px-0 text-transparent bg-clip-text bg-gradient-to-r from-gradient-ai-primary via-gradient-ai-secondary to-gradient-ai-tertiary animate-text-shimmer"
-                    style={{
-                      backgroundSize: '200% auto',
-                    }}
+                    className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-text-primary mb-4 px-4 sm:px-0"
                     dangerouslySetInnerHTML={{ __html: "병원 성장의 3단계,<br/>AI로 해결" }}
                   />
                   <p className="text-base sm:text-lg text-text-secondary max-w-2xl lg:max-w-3xl mx-auto px-4 sm:px-0">
@@ -274,7 +271,7 @@ const HomePage: React.FC = () => {
                     </Badge>
                     <h2 
                       id="calculator-heading" 
-                      className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 px-4 sm:px-0 text-transparent bg-clip-text bg-gradient-to-r from-gradient-ai-electric via-gradient-ai-neon to-gradient-ai-primary animate-glow-pulse"
+                      className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-text-primary mb-4 px-4 sm:px-0"
                       dangerouslySetInnerHTML={{ __html: "AI도입 후 우리병원의,<br/>예상성장률은?" }}
                     />
                     <p 
@@ -443,7 +440,7 @@ const HomePage: React.FC = () => {
                   <Badge variant="primary" size="sm" dot className="mb-4">
                     Success Stories
                   </Badge>
-                  <h2 id="success-stories-heading" className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 px-4 sm:px-0 text-transparent bg-clip-text bg-gradient-to-r from-gradient-ai-tertiary via-gradient-ai-secondary to-gradient-ai-primary animate-float">
+                  <h2 id="success-stories-heading" className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-text-primary mb-4 px-4 sm:px-0">
                     성공스토리
                   </h2>
                   <p className="text-base sm:text-lg text-text-secondary max-w-2xl lg:max-w-3xl mx-auto px-4 sm:px-0">

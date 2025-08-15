@@ -102,25 +102,25 @@ const PricingPage: React.FC = () => {
       <NavigationBar links={navLinks} />
       
       {/* Page Header */}
-      <section className="pt-32 pb-16 px-6 lg:px-8">
+      <section className="pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">
-          <Badge variant="primary" size="sm" dot pulse className="mb-6">
+          <Badge variant="primary" size="sm" dot pulse className="mb-4 sm:mb-6">
             Pricing Plans
           </Badge>
-          <h1 className="text-5xl lg:text-6xl font-bold text-text-primary mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-text-primary mb-4 sm:mb-6 px-4 sm:px-0">
             우리 병원에 맞는 플랜을 선택하세요
           </h1>
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto mb-12">
+          <p className="text-base sm:text-lg lg:text-xl text-text-secondary max-w-2xl lg:max-w-3xl mx-auto mb-8 sm:mb-12 px-4 sm:px-0">
             병원 규모와 필요에 따라 최적의 요금제를 선택하세요.
             모든 플랜은 14일 무료 체험이 가능합니다.
           </p>
 
           {/* Billing Toggle */}
-          <div className="inline-flex items-center gap-4 p-1 bg-background-secondary rounded-xl border border-border-primary">
+          <div className="inline-flex items-center gap-2 sm:gap-4 p-1 bg-background-secondary rounded-xl border border-border-primary mx-4 sm:mx-0">
             <button
               onClick={() => setBillingPeriod('monthly')}
               className={cn(
-                'px-6 py-2.5 rounded-lg font-medium transition-all',
+                'px-3 sm:px-6 py-2 sm:py-2.5 rounded-lg font-medium transition-all text-sm sm:text-base',
                 billingPeriod === 'monthly'
                   ? 'bg-accent-primary text-white shadow-lg'
                   : 'text-text-secondary hover:text-text-primary'
@@ -131,14 +131,14 @@ const PricingPage: React.FC = () => {
             <button
               onClick={() => setBillingPeriod('yearly')}
               className={cn(
-                'px-6 py-2.5 rounded-lg font-medium transition-all',
+                'px-3 sm:px-6 py-2 sm:py-2.5 rounded-lg font-medium transition-all text-sm sm:text-base flex items-center',
                 billingPeriod === 'yearly'
                   ? 'bg-accent-primary text-white shadow-lg'
                   : 'text-text-secondary hover:text-text-primary'
               )}
             >
               연간 결제
-              <Badge variant="success" size="xs" className="ml-2">
+              <Badge variant="success" size="xs" className="ml-1 sm:ml-2 hidden sm:inline-flex">
                 2개월 무료
               </Badge>
             </button>
@@ -147,9 +147,9 @@ const PricingPage: React.FC = () => {
       </section>
 
       {/* Pricing Cards */}
-      <section className="px-6 pb-24 lg:px-8">
+      <section className="px-4 sm:px-6 pb-16 sm:pb-24 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {pricingPlans.map((plan, index) => (
               <Card
                 key={index}
@@ -181,16 +181,16 @@ const PricingPage: React.FC = () => {
                 </div>
 
                 {/* Price */}
-                <div className="mb-8">
+                <div className="mb-6 sm:mb-8">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-bold text-text-primary">
+                    <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-text-primary break-all">
                       {typeof plan.price[billingPeriod] === 'string' 
                         ? plan.price[billingPeriod]
                         : `₩${formatPrice(plan.price[billingPeriod])}`
                       }
                     </span>
                     {typeof plan.price[billingPeriod] === 'number' && (
-                      <span className="text-text-muted">
+                      <span className="text-text-muted text-sm sm:text-base">
                         /{billingPeriod === 'monthly' ? '월' : '년'}
                       </span>
                     )}
@@ -203,7 +203,7 @@ const PricingPage: React.FC = () => {
                 </div>
 
                 {/* Features */}
-                <ul className="space-y-3 mb-8 flex-grow">
+                <ul className="space-y-3 mb-6 sm:mb-8 flex-grow">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
                       {feature.included ? (
@@ -239,13 +239,13 @@ const PricingPage: React.FC = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="px-6 py-24 lg:px-8 bg-gradient-to-t from-background-secondary to-background-primary">
+      <section className="px-4 sm:px-6 py-16 sm:py-20 lg:py-24 lg:px-8 bg-gradient-to-t from-background-secondary to-background-primary">
         <div className="mx-auto max-w-4xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-text-primary mb-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-text-primary mb-4 px-4 sm:px-0">
               자주 묻는 질문
             </h2>
-            <p className="text-lg text-text-secondary">
+            <p className="text-base sm:text-lg text-text-secondary px-4 sm:px-0">
               요금제에 대해 궁금한 점이 있으신가요?
             </p>
           </div>
@@ -276,11 +276,11 @@ const PricingPage: React.FC = () => {
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-8 sm:mt-12 px-4 sm:px-0">
             <p className="text-text-secondary mb-4">
               더 궁금한 점이 있으신가요?
             </p>
-            <Button variant="tertiary" size="lg" href="/contact">
+            <Button variant="tertiary" size="lg" href="/contact" className="w-full sm:w-auto">
               영업팀에 문의하기
             </Button>
           </div>

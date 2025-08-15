@@ -49,19 +49,16 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   const titleStyles = cn(
     'text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight',
     'text-transparent bg-clip-text',
-    'bg-gradient-to-r from-gradient-ai-primary via-gradient-ai-electric to-gradient-ai-neon',
-    'animate-glow-pulse leading-tight',
-    'relative'
+    'bg-gradient-to-b from-text-primary to-text-secondary',
+    'animate-fade-in leading-tight'
   );
 
   const subtitleStyles = cn(
     'mt-4 text-base sm:text-lg md:text-xl lg:text-2xl',
-    'text-transparent bg-clip-text',
-    'bg-gradient-to-r from-text-secondary via-text-primary to-text-secondary',
+    'text-text-secondary',
     'max-w-2xl lg:max-w-3xl',
     centered && 'mx-auto',
-    'animate-slide-up px-4 sm:px-0',
-    'font-medium'
+    'animate-slide-up px-4 sm:px-0'
   );
 
   const descriptionStyles = cn(
@@ -69,8 +66,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     'text-text-muted',
     'max-w-xl lg:max-w-2xl',
     centered && 'mx-auto',
-    'animate-slide-up px-4 sm:px-0',
-    'leading-relaxed opacity-90'
+    'animate-slide-up px-4 sm:px-0'
   );
 
   const actionsStyles = cn(

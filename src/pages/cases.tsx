@@ -63,7 +63,7 @@ const CasesPage: React.FC = () => {
     <div className="min-h-screen bg-background-primary">
       <NavigationBar links={navLinks} />
       
-      <section className="pt-32 pb-16 px-6 lg:px-8">
+      <section className="pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">
           <Badge variant="success" size="sm" dot className="mb-6">
             Success Stories

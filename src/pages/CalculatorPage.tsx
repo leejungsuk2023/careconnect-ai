@@ -130,15 +130,15 @@ const CalculatorPage: React.FC = () => {
       <NavigationBar links={navLinks} />
 
       {/* Page Header */}
-      <section className="pt-32 pb-16 px-6 lg:px-8">
+      <section className="pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">
-          <Badge variant="success" size="sm" dot pulse className="mb-6">
+          <Badge variant="success" size="sm" dot pulse className="mb-4 sm:mb-6">
             AI Growth Calculator
           </Badge>
-          <h1 className="text-5xl lg:text-6xl font-bold text-text-primary mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-text-primary mb-4 sm:mb-6 px-4 sm:px-0">
             우리 병원의 AI 도입 효과를 계산해보세요
           </h1>
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-text-secondary max-w-2xl lg:max-w-3xl mx-auto px-4 sm:px-0">
             정확한 데이터 입력으로 CareConnect AI 도입 시 예상되는 성과를 확인하고,
             투자 대비 수익률을 계산해보세요.
           </p>
@@ -146,12 +146,12 @@ const CalculatorPage: React.FC = () => {
       </section>
 
       {/* Calculator Section */}
-      <section className="px-6 pb-24 lg:px-8">
+      <section className="px-4 sm:px-6 pb-16 sm:pb-24 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8">
             {/* Input Panel */}
             <div className="lg:col-span-2">
-              <Card variant="elevated" className="sticky top-24">
+              <Card variant="elevated" className="lg:sticky lg:top-24">
                 <h2 className="text-2xl font-bold text-text-primary mb-6">
                   병원 정보 입력
                 </h2>
@@ -308,7 +308,7 @@ const CalculatorPage: React.FC = () => {
                 <>
                   {/* Summary Cards */}
                   <motion.div 
-                    className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                    className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
@@ -322,7 +322,7 @@ const CalculatorPage: React.FC = () => {
                           </svg>
                         </div>
                         <h3 className="text-sm text-text-secondary mb-2">예상 추가 매출</h3>
-                        <p className="text-3xl font-bold text-text-primary">
+                        <p className="text-2xl sm:text-3xl font-bold text-text-primary break-all">
                           ₩{formatNumber(results.additionalRevenue)}
                         </p>
                         <p className="text-sm text-accent-green mt-2">
@@ -340,7 +340,7 @@ const CalculatorPage: React.FC = () => {
                           </svg>
                         </div>
                         <h3 className="text-sm text-text-secondary mb-2">투자 수익률</h3>
-                        <p className="text-3xl font-bold text-text-primary">
+                        <p className="text-2xl sm:text-3xl font-bold text-text-primary">
                           {results.roi}%
                         </p>
                         <p className="text-sm text-accent-primary mt-2">
@@ -469,11 +469,11 @@ const CalculatorPage: React.FC = () => {
                     <p className="text-text-secondary mb-6">
                       지금 바로 CareConnect AI를 도입하고 병원의 성장을 가속화하세요
                     </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                      <Button variant="primary" size="lg">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
+                      <Button variant="primary" size="lg" className="w-full sm:w-auto">
                         무료 데모 신청하기
                       </Button>
-                      <Button variant="secondary" size="lg">
+                      <Button variant="secondary" size="lg" className="w-full sm:w-auto">
                         상담 예약하기
                       </Button>
                     </div>

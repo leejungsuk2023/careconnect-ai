@@ -161,30 +161,30 @@ const BlogListPage: React.FC = () => {
       <NavigationBar links={navLinks} />
 
       {/* Page Header */}
-      <section className="pt-32 pb-16 px-6 lg:px-8">
+      <section className="pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">
-          <Badge variant="primary" size="sm" dot pulse className="mb-6">
+          <Badge variant="primary" size="sm" dot pulse className="mb-4 sm:mb-6">
             Blog & Resources
           </Badge>
-          <h1 className="text-5xl lg:text-6xl font-bold text-text-primary mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-text-primary mb-4 sm:mb-6 px-4 sm:px-0">
             의료 AI의 모든 것
           </h1>
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-text-secondary max-w-2xl lg:max-w-3xl mx-auto px-4 sm:px-0">
             CareConnect AI와 함께하는 스마트 헬스케어의 최신 동향과 실전 노하우를 만나보세요
           </p>
         </div>
       </section>
 
       {/* Categories */}
-      <section className="px-6 pb-8 lg:px-8">
+      <section className="px-4 sm:px-6 pb-6 sm:pb-8 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
                 className={cn(
-                  'px-4 py-2 rounded-lg font-medium transition-all duration-200',
+                  'px-3 sm:px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base',
                   selectedCategory === category.id
                     ? 'bg-accent-primary text-white shadow-lg'
                     : 'bg-background-secondary text-text-secondary hover:bg-background-tertiary hover:text-text-primary'
@@ -198,10 +198,10 @@ const BlogListPage: React.FC = () => {
       </section>
 
       {/* Blog Posts */}
-      <section className="px-6 pb-24 lg:px-8">
+      <section className="px-4 sm:px-6 pb-16 sm:pb-24 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {isLoading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
               {[...Array(6)].map((_, index) => (
                 <Card key={index} variant="elevated" className="animate-pulse">
                   <div className="aspect-video bg-background-primary rounded-lg mb-4" />
@@ -233,7 +233,7 @@ const BlogListPage: React.FC = () => {
             <>
               <AnimatedSection>
                 <motion.div
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
                   variants={staggerContainerVariants}
                   initial="hidden"
                   whileInView="visible"
@@ -319,7 +319,7 @@ const BlogListPage: React.FC = () => {
 
               {/* Pagination */}
               {totalPages > 1 && (
-                <div className="flex justify-center items-center gap-4 mt-12">
+                <div className="flex justify-center items-center gap-2 sm:gap-4 mt-8 sm:mt-12">
                   <Button
                     variant="secondary"
                     disabled={currentPage === 1}
@@ -328,13 +328,13 @@ const BlogListPage: React.FC = () => {
                     이전
                   </Button>
                   
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1 sm:gap-2">
                     {[...Array(totalPages)].map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentPage(index + 1)}
                         className={cn(
-                          'w-10 h-10 rounded-lg font-medium transition-all duration-200',
+                          'w-8 h-8 sm:w-10 sm:h-10 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base',
                           currentPage === index + 1
                             ? 'bg-accent-primary text-white'
                             : 'text-text-secondary hover:bg-background-secondary hover:text-text-primary'
@@ -361,16 +361,16 @@ const BlogListPage: React.FC = () => {
 
       {/* Newsletter Subscription */}
       <AnimatedSection>
-        <section className="px-6 py-24 lg:px-8 bg-gradient-to-t from-background-secondary to-background-primary">
+        <section className="px-4 sm:px-6 py-16 sm:py-20 lg:py-24 lg:px-8 bg-gradient-to-t from-background-secondary to-background-primary">
           <div className="mx-auto max-w-4xl">
             <Card variant="gradient" className="text-center">
-              <h3 className="text-2xl lg:text-3xl font-bold text-text-primary mb-4">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-text-primary mb-4 px-4 sm:px-0">
                 최신 의료 AI 소식을 받아보세요
               </h3>
-              <p className="text-lg text-text-secondary mb-8">
+              <p className="text-base sm:text-lg text-text-secondary mb-6 sm:mb-8 px-4 sm:px-0">
                 매주 화요일, CareConnect AI의 최신 업데이트와 의료 마케팅 인사이트를 이메일로 전해드립니다.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md mx-auto px-4 sm:px-0">
                 <input
                   type="email"
                   placeholder="이메일 주소를 입력하세요"
@@ -381,7 +381,7 @@ const BlogListPage: React.FC = () => {
                     'transition-all duration-200'
                   )}
                 />
-                <Button variant="primary">
+                <Button variant="primary" className="w-full sm:w-auto">
                   구독하기
                 </Button>
               </div>

@@ -20,21 +20,21 @@ const ContactPage: React.FC = () => {
     <div className="min-h-screen bg-background-primary">
       <NavigationBar links={navLinks} />
       
-      <section className="pt-32 pb-16 px-6 lg:px-8">
+      <section className="pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <Badge variant="primary" size="sm" dot className="mb-6">
+          <Badge variant="primary" size="sm" dot className="mb-4 sm:mb-6">
             Contact Us
           </Badge>
-          <h1 className="text-5xl lg:text-6xl font-bold text-text-primary mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-text-primary mb-4 sm:mb-6 px-4 sm:px-0">
             문의하기
           </h1>
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-text-secondary max-w-2xl lg:max-w-3xl mx-auto px-4 sm:px-0">
             CareConnect AI에 대해 궁금한 점이 있으시거나 데모를 원하시면 언제든 연락주세요.
           </p>
         </div>
       </section>
 
-      <section className="px-6 pb-24 lg:px-8">
+      <section className="px-4 sm:px-6 pb-16 sm:pb-24 lg:px-8">
         <div className="mx-auto max-w-2xl">
           <Card variant="elevated">
             <h2 className="text-2xl font-bold text-text-primary mb-6">
