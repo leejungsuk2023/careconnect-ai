@@ -7,7 +7,7 @@
 /* Focus management for accessibility */
 @layer base {
   *:focus {
-    outline: 2px solid theme('colors.accent.primary');
+    outline: 2px solid #5E6AD2;
     outline-offset: 2px;
   }
 
@@ -92,32 +92,32 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: theme('colors.background.primary');
+    background: #0D0E14;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: theme('colors.accent.primary');
+    background: #5E6AD2;
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: theme('colors.accent.secondary');
+    background: #7B61FF;
   }
 
   /* Firefox scrollbar */
   html {
     scrollbar-width: thin;
-    scrollbar-color: theme('colors.accent.primary') theme('colors.background.primary');
+    scrollbar-color: #5E6AD2 #0D0E14;
   }
 
   /* Text selection */
   ::selection {
-    background-color: theme('colors.accent.primary');
+    background-color: #5E6AD2;
     color: white;
   }
 
   ::-moz-selection {
-    background-color: theme('colors.accent.primary');
+    background-color: #5E6AD2;
     color: white;
   }
 }
@@ -150,9 +150,9 @@
   .skeleton {
     background: linear-gradient(
       90deg,
-      theme('colors.background.secondary') 25%,
-      theme('colors.background.tertiary') 50%,
-      theme('colors.background.secondary') 75%
+      #16171D 25%,
+      #1C1D24 50%,
+      #16171D 75%
     );
     background-size: 200% 100%;
     animation: skeleton-loading 1.5s infinite;
@@ -183,7 +183,7 @@
   .prose h4,
   .prose h5,
   .prose h6 {
-    color: theme('colors.text.primary');
+    color: #FAFBFC;
     font-weight: 600;
     line-height: 1.4;
   }
@@ -206,19 +206,19 @@
   }
 
   .prose p {
-    color: theme('colors.text.secondary');
+    color: #C9CDD6;
     line-height: 1.75;
     margin-bottom: 1rem;
   }
 
   .prose a {
-    color: theme('colors.accent.primary');
+    color: #5E6AD2;
     text-decoration: underline;
     font-weight: 500;
   }
 
   .prose a:hover {
-    color: theme('colors.accent.secondary');
+    color: #7B61FF;
   }
 
   .prose ul,
@@ -228,29 +228,29 @@
   }
 
   .prose li {
-    color: theme('colors.text.secondary');
+    color: #C9CDD6;
     margin-bottom: 0.25rem;
   }
 
   .prose blockquote {
-    border-left: 4px solid theme('colors.accent.primary');
+    border-left: 4px solid #5E6AD2;
     padding-left: 1rem;
     margin: 1.5rem 0;
     font-style: italic;
-    color: theme('colors.text.muted');
+    color: #8B949E;
   }
 
   .prose code {
-    background-color: theme('colors.background.tertiary');
-    color: theme('colors.accent.primary');
+    background-color: #1C1D24;
+    color: #5E6AD2;
     padding: 0.125rem 0.25rem;
     border-radius: 0.25rem;
     font-size: 0.875rem;
   }
 
   .prose pre {
-    background-color: theme('colors.background.tertiary');
-    color: theme('colors.text.primary');
+    background-color: #1C1D24;
+    color: #FAFBFC;
     padding: 1rem;
     border-radius: 0.5rem;
     overflow-x: auto;
@@ -498,7 +498,7 @@ html {
 }
 
 body {
-  color: theme('colors.text.primary');
+  color: #FAFBFC;
   background: linear-gradient(135deg, #0D0E14 0%, #16171D 100%);
   background-attachment: fixed;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -565,8 +565,25 @@ body::before {
     0px 0px;
   animation: aiParticleFlow 25s ease-in-out infinite;
   pointer-events: none;
-  z-index: -1;
+  z-index: -10;
   will-change: transform;
+}
+
+/* Ensure content is above background */
+main, .min-h-screen > *, 
+nav, header, section, article {
+  position: relative;
+  z-index: 1;
+}
+
+/* Force text visibility */
+h1, h2, h3, h4, h5, h6, p, span, div {
+  color: inherit;
+}
+
+/* Ensure navigation is visible */
+nav {
+  z-index: 100;
 }
 
 /* Performance optimizations */
