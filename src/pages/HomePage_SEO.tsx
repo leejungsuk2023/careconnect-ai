@@ -123,7 +123,7 @@ const HomePage: React.FC = () => {
       />
       <SoftwareSchema />
 
-      <div className="min-h-screen bg-background-primary">
+      <div className="min-h-screen">
         <SkipToContent />
         
         <NavigationBar links={navLinks} />
