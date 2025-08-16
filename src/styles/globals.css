@@ -6,6 +6,11 @@
 
 /* Focus management for accessibility */
 @layer base {
+  /* Mobile layout stabilization */
+  * {
+    box-sizing: border-box;
+  }
+  
   *:focus {
     outline: 2px solid #5E6AD2;
     outline-offset: 2px;
@@ -267,6 +272,20 @@
 
 /* Utility classes */
 @layer utilities {
+  /* Mobile-first responsive utilities */
+  .mobile-safe-width {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .mobile-safe-container {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+  
   /* Aspect ratio utilities */
   .aspect-video {
     aspect-ratio: 16 / 9;
@@ -346,6 +365,8 @@
 /* Dark theme default */
 html {
   color-scheme: dark;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* Channel Talk Custom Styles */
@@ -385,6 +406,8 @@ body {
   background: #0D0E14;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.6;
+  width: 100%;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
