@@ -6,7 +6,10 @@ module.exports = {
     './public/index.html',
   ],
   theme: {
-    extend: {
+          extend: {
+      minHeight: {
+        screen: '100dvh',
+      },
       // 색상 시스템
       colors: {
         // 배경 색상 - Linear의 깊이있는 다크 테마
