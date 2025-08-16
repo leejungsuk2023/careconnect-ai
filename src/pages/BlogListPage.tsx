@@ -157,7 +157,7 @@ const BlogListPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background-primary bg-floating-orbs">
+    <div className="min-h-screen bg-background-primary">
       <NavigationBar links={navLinks} />
 
       {/* Page Header */}

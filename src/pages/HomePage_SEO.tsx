@@ -164,7 +164,7 @@ const HomePage: React.FC = () => {
 
           {/* Solutions Section */}
           <AnimatedSection>
-            <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24 bg-grid-pattern relative" aria-labelledby="solutions-heading">
+            <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24 relative" aria-labelledby="solutions-heading">
               <div className="mx-auto max-w-7xl px-4 sm:px-0">
                 {/* Section Header */}
                 <header className="text-center mb-12 sm:mb-16">
@@ -260,7 +260,7 @@ const HomePage: React.FC = () => {
           <AnimatedSection>
             <section 
               id="growth-calculator" 
-              className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24 bg-gradient-to-b from-background-primary to-background-secondary bg-dot-pattern relative"
+              className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24 bg-gradient-to-b from-background-primary to-background-secondary relative"
               aria-labelledby="calculator-heading"
             >
               <div className="mx-auto max-w-7xl px-4 sm:px-0">
@@ -434,7 +434,7 @@ const HomePage: React.FC = () => {
 
           {/* Success Stories Section */}
           <AnimatedSection>
-            <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24 bg-floating-orbs relative" aria-labelledby="success-stories-heading">
+            <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24 relative" aria-labelledby="success-stories-heading">
               <div className="mx-auto max-w-7xl px-4 sm:px-0">
                 <header className="text-center mb-12 sm:mb-16">
                   <Badge variant="primary" size="sm" dot className="mb-4">
