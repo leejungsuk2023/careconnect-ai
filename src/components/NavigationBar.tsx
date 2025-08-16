@@ -80,8 +80,8 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
   }, [mobileMenuOpen]);
 
   const baseStyles = cn(
-    'w-full z-50 transition-all duration-300',
-    sticky && 'fixed top-0 left-0 right-0'
+    'w-full min-w-full max-w-full z-50 transition-all duration-300',
+    sticky && 'fixed-nav-safe'
   );
 
   return (

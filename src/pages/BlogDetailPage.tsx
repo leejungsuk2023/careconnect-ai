@@ -85,7 +85,7 @@ const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ postId = 1 }) => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-background-primary">
+      <div className="min-h-screen bg-background-primary mobile-safe-container">
         <NavigationBar links={navLinks} />
         <div className="pt-32 pb-24 px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
@@ -110,7 +110,7 @@ const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ postId = 1 }) => {
 
   if (error || !post) {
     return (
-      <div className="min-h-screen bg-background-primary">
+      <div className="min-h-screen bg-background-primary mobile-safe-container">
         <NavigationBar links={navLinks} />
         <div className="pt-32 pb-24 px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
@@ -137,7 +137,7 @@ const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ postId = 1 }) => {
   }
 
   return (
-    <div className="min-h-screen bg-background-primary">
+    <div className="min-h-screen bg-background-primary mobile-safe-container">
       <NavigationBar links={navLinks} />
 
       {/* Article Header */}

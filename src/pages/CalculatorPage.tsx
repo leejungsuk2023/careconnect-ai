@@ -126,7 +126,7 @@ const CalculatorPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background-primary">
+    <div className="min-h-screen bg-background-primary mobile-safe-container">
       <NavigationBar links={navLinks} />
 
       {/* Page Header */}
