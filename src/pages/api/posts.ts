@@ -36,6 +36,32 @@ const estimateReadingTime = (text: string): number => {
   return minutes;
 };
 
+const fetchOgImage = async (url?: string): Promise<string | undefined> => {
+  if (!url) return undefined;
+  try {
+    const resp = await fetch(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+      }
+    });
+    if (!resp.ok) return undefined;
+    const html = await resp.text();
+    // Try common og:image patterns
+    const patterns = [
+      /<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["'][^>]*>/i,
+      /<meta[^>]+name=["']twitter:image["'][^>]+content=["']([^"']+)["'][^>]*>/i,
+    ];
+    for (const re of patterns) {
+      const m = html.match(re);
+      if (m && m[1]) return m[1];
+    }
+    return undefined;
+  } catch {
+    return undefined;
+  }
+};
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
     return res.status(405).json({ message: 'Method not allowed' });
@@ -66,14 +92,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       : [];
 
     // 최신 5개 우선
-    const normalized = items.slice(0, 5).map((item): any => {
+    const normalized = await Promise.all(items.slice(0, 5).map(async (item): Promise<any> => {
       const link = item.link || '';
       const idString = (link.split('/').pop() || '').replace(/[^0-9]/g, '');
       const id = Number(idString) || Math.floor(Math.random() * 1_000_000);
       const rawDescription = item.description || '';
       const excerptFull = stripHtml(rawDescription);
       const excerpt = excerptFull.length > 180 ? `${excerptFull.slice(0, 177)}...` : excerptFull;
-      const thumbnail = extractFirstImage(rawDescription);
+      let thumbnail = extractFirstImage(rawDescription);
+      if (!thumbnail) {
+        thumbnail = await fetchOgImage(link);
+      }
       const publishedAt = item.pubDate ? new Date(item.pubDate).toISOString() : new Date().toISOString();
       const category = Array.isArray(item.category) ? item.category[0] : item.category || 'naver';
       const author = item.author || 'CareConnect AI';
@@ -94,7 +123,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         featured: false,
         externalUrl: link,
       };
-    });
+    }));
 
     // 페이징 계산 (현재는 5개 고정)
     const totalPosts = normalized.length;

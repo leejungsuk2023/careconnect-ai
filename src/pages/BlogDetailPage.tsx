@@ -220,6 +220,7 @@ const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ postId = 1 }) => {
               <img
                 src={post.thumbnail}
                 alt={post.title}
+                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
