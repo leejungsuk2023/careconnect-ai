@@ -5,7 +5,7 @@ import Card from '../components/Card';
 import Badge from '../components/Badge';
 import Button from '../components/Button';
 import AnimatedSection, { staggerContainerVariants, fadeInUpVariants } from '../components/AnimatedSection';
-import { blogApi, BlogPost } from '../services/api';
+import type { BlogPost } from '../services/api';
 import { cn } from '../utils/cn';
 
 const BlogListPage: React.FC = () => {
@@ -36,97 +36,31 @@ const BlogListPage: React.FC = () => {
 
   useEffect(() => {
     fetchPosts();
-  }, [currentPage]);
+  }, [currentPage, selectedCategory]);
 
   const fetchPosts = async () => {
     setIsLoading(true);
     setError(null);
-
     try {
-      // 실제 네이버 블로그 데이터 (목 데이터)
-      const mockPosts: BlogPost[] = [
-        {
-          id: 1,
-          title: "의료진이 알아야 할 헬스케어 AI의 현재와 미래",
-          excerpt: "인공지능이 의료 현장에 가져온 혁신적 변화와 앞으로의 발전 방향에 대해 살펴봅니다. 진단 보조 시스템부터 개인 맞춤형 치료까지...",
-          content: "",
-          category: "ai-technology",
-          author: "CareConnect AI",
-          publishedAt: "2024-12-15",
-          readTime: 8,
-          tags: ["AI", "헬스케어", "의료진단", "미래의학"],
-          featured: true,
-          externalUrl: "https://blog.naver.com/meditravelconnect/223921709829"
-        },
-        {
-          id: 2,
-          title: "병원 마케팅 디지털 전환 전략 가이드",
-          excerpt: "코로나19 이후 가속화된 의료 마케팅의 디지털 전환. 성공적인 온라인 마케팅 전략과 환자 소통 방법을 알아봅시다.",
-          content: "",
-          category: "healthcare-marketing",
-          author: "CareConnect AI",
-          publishedAt: "2024-12-10",
-          readTime: 6,
-          tags: ["디지털마케팅", "병원경영", "온라인상담"],
-          featured: false,
-          externalUrl: "https://blog.naver.com/meditravelconnect"
-        },
-        {
-          id: 3,
-          title: "환자 만족도 향상을 위한 AI 챗봇 활용법",
-          excerpt: "24시간 환자 상담이 가능한 AI 챗봇 시스템. 실제 도입 사례와 환자 만족도 개선 효과를 데이터로 확인해보세요.",
-          content: "",
-          category: "case-study",
-          author: "CareConnect AI",
-          publishedAt: "2024-12-05",
-          readTime: 5,
-          tags: ["챗봇", "환자상담", "고객만족"],
-          featured: true,
-          externalUrl: "https://blog.naver.com/meditravelconnect"
-        },
-        {
-          id: 4,
-          title: "의료 빅데이터와 개인정보보호: 균형점 찾기",
-          excerpt: "의료 데이터 활용의 중요성과 개인정보보호 사이의 균형. GDPR, 개인정보보호법 등 법적 요구사항을 준수하면서 혁신하는 방법.",
-          content: "",
-          category: "industry-insights",
-          author: "CareConnect AI",
-          publishedAt: "2024-11-28",
-          readTime: 7,
-          tags: ["빅데이터", "개인정보보호", "GDPR", "의료법"],
-          featured: false,
-          externalUrl: "https://blog.naver.com/meditravelconnect"
-        },
-        {
-          id: 5,
-          title: "스마트 병원의 현재와 미래 전망",
-          excerpt: "IoT, AI, 로봇 기술이 만들어가는 스마트 병원의 모습. 국내외 선진 사례와 도입 시 고려사항을 정리했습니다.",
-          content: "",
-          category: "ai-technology",
-          author: "CareConnect AI", 
-          publishedAt: "2024-11-20",
-          readTime: 9,
-          tags: ["스마트병원", "IoT", "로봇기술", "미래의료"],
-          featured: false,
-          externalUrl: "https://blog.naver.com/meditravelconnect"
-        },
-        {
-          id: 6,
-          title: "원격의료 시대, 환자 관리 시스템의 진화",
-          excerpt: "팬데믹으로 주목받은 원격의료. 효과적인 원격 환자 관리를 위한 시스템 구축 방법과 성공 요인을 분석합니다.",
-          content: "",
-          category: "case-study",
-          author: "CareConnect AI",
-          publishedAt: "2024-11-15",
-          readTime: 6,
-          tags: ["원격의료", "환자관리", "텔레헬스"],
-          featured: false,
-          externalUrl: "https://blog.naver.com/meditravelconnect"
-        }
-      ];
-
-      setPosts(mockPosts);
-      setTotalPages(Math.ceil(mockPosts.length / 12));
+      const res = await fetch(`/api/posts?page=${currentPage}&limit=12`);
+      if (!res.ok) throw new Error('Failed to load posts');
+      const data = await res.json();
+      const mapped: BlogPost[] = data.posts.map((p: any, idx: number) => ({
+        id: p.id ?? idx + 1,
+        title: p.title,
+        excerpt: p.excerpt,
+        content: p.content,
+        category: p.category || 'naver',
+        author: p.author || 'CareConnect AI',
+        publishedAt: p.publishedAt,
+        readTime: p.readTime ?? p.readingTime ?? 3,
+        tags: p.tags || [],
+        featured: p.featured || false,
+        externalUrl: p.externalUrl,
+        thumbnail: p.thumbnail,
+      }));
+      setPosts(mapped);
+      setTotalPages(data.totalPages || 1);
     } catch (err) {
       setError('블로그 게시물을 불러오는 중 오류가 발생했습니다.');
       console.error('Blog fetch error:', err);
@@ -273,7 +207,7 @@ const BlogListPage: React.FC = () => {
                               {formatDate(post.publishedAt)}
                             </span>
                             <span className="text-xs text-text-muted">
-                              {post.readingTime}분 읽기
+                              {(post.readingTime ?? post.readTime ?? 3)}분 읽기
                             </span>
                           </div>
 

@@ -68,7 +68,9 @@ export interface BlogPost {
   thumbnail?: string;
   author: string;
   publishedAt: string;
-  readTime: number;
+  // 기존 코드 호환을 위해 두 속성을 모두 지원합니다.
+  readTime?: number;
+  readingTime?: number;
   tags: string[];
   category: string;
   featured?: boolean;
