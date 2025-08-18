@@ -1,0 +1,51 @@
+{
+  "name": "CareConnect AI - 병원 전용 AI 마케팅 솔루션",
+  "short_name": "CareConnect AI",
+  "description": "AI 기술로 병원 마케팅을 혁신하세요. 콘텐츠 생성, 퍼포먼스 마케팅, 환자 상담까지 모든 과정을 자동화합니다.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D0E14",
+  "theme_color": "#5E6AD2",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "ko-KR",
+  "categories": ["healthcare", "business", "productivity"],
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-homepage.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "CareConnect AI 홈페이지"
+    },
+    {
+      "src": "/screenshots/mobile-homepage.png",
+      "sizes": "375x812",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "CareConnect AI 모바일 홈페이지"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

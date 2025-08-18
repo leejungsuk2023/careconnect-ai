@@ -227,16 +227,16 @@ const SolutionsPage: React.FC = () => {
                 <Card variant="glass" padding="none" className="overflow-hidden">
                   {/* Placeholder for visual content */}
                   <div 
-                    className="h-[600px] sm:h-[500px] lg:h-[500px] relative"
+                    className="h-[300px] sm:h-[400px] lg:h-[500px] relative"
                     style={{
                       background: `linear-gradient(135deg, ${solution.gradient.from}20, ${solution.gradient.to}20)`,
                     }}
                   >
                     {/* Benefits overlay */}
-                    <div className="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8">
+                    <div className="absolute bottom-2 left-2 right-2 sm:bottom-8 sm:left-8 sm:right-8">
                       <div className="bg-background-primary/90 backdrop-blur-lg rounded-xl p-3 sm:p-6 border border-border-primary">
                         <h4 className="font-semibold text-text-primary mb-3 sm:mb-6">주요 성과</h4>
-                        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 lg:gap-6">
+                        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-1 sm:gap-4 lg:gap-6">
                           {solution.benefits.map((benefit, benefitIndex) => (
                             <motion.div 
                               key={benefitIndex} 
@@ -251,53 +251,53 @@ const SolutionsPage: React.FC = () => {
                               <div className="absolute -inset-1 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-xl blur opacity-25 group-hover:opacity-75 transition duration-300"></div>
                               
                               {/* Card content */}
-                              <div className="relative bg-background-primary/80 backdrop-blur-sm border border-accent-primary/30 rounded-lg sm:rounded-xl p-2 sm:p-4 h-full">
+                              <div className="relative bg-background-primary/80 backdrop-blur-sm border border-accent-primary/30 rounded-lg sm:rounded-xl p-1.5 sm:p-4 h-full">
                                 {/* Top decoration */}
                                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                                   <div className="w-3 h-3 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full"></div>
                                 </div>
                                 
                                 {/* Content */}
-                                <div className="text-center pt-1 sm:pt-2">
+                                <div className="text-center pt-0.5 sm:pt-2">
                                   {/* Icon based on benefit type */}
-                                  <div className="mb-2 sm:mb-3 flex justify-center">
+                                  <div className="mb-1 sm:mb-3 flex justify-center">
                                     {benefit.includes('시간') || benefit.includes('단축') ? (
                                       <motion.div 
-                                        className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-r from-accent-green to-accent-blue flex items-center justify-center"
+                                        className="w-5 h-5 sm:w-8 sm:h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-r from-accent-green to-accent-blue flex items-center justify-center"
                                         whileHover={{ rotate: 360 }}
                                         transition={{ duration: 0.6 }}
                                       >
-                                        <svg className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg className="w-2.5 h-2.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
                                       </motion.div>
                                     ) : benefit.includes('증가') || benefit.includes('향상') ? (
                                       <motion.div 
-                                        className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-r from-accent-primary to-accent-purple flex items-center justify-center"
+                                        className="w-5 h-5 sm:w-8 sm:h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-r from-accent-primary to-accent-purple flex items-center justify-center"
                                         whileHover={{ scale: 1.2 }}
                                         transition={{ duration: 0.3 }}
                                       >
-                                        <svg className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg className="w-2.5 h-2.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                                         </svg>
                                       </motion.div>
                                     ) : benefit.includes('절감') || benefit.includes('ROI') ? (
                                       <motion.div 
-                                        className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-r from-accent-yellow to-accent-green flex items-center justify-center"
+                                        className="w-5 h-5 sm:w-8 sm:h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-r from-accent-yellow to-accent-green flex items-center justify-center"
                                         whileHover={{ y: -5 }}
                                         transition={{ duration: 0.3 }}
                                       >
-                                        <svg className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg className="w-2.5 h-2.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
                                       </motion.div>
                                     ) : (
                                       <motion.div 
-                                        className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-r from-accent-secondary to-accent-primary flex items-center justify-center"
+                                        className="w-5 h-5 sm:w-8 sm:h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-r from-accent-secondary to-accent-primary flex items-center justify-center"
                                         whileHover={{ rotate: 180 }}
                                         transition={{ duration: 0.5 }}
                                       >
-                                        <svg className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg className="w-2.5 h-2.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                                         </svg>
                                       </motion.div>
@@ -306,7 +306,7 @@ const SolutionsPage: React.FC = () => {
                                   
                                   {/* Metric text */}
                                   <motion.p 
-                                    className="text-accent-primary font-bold text-xs sm:text-sm lg:text-lg mb-1 sm:mb-2"
+                                    className="text-accent-primary font-bold text-xs sm:text-sm lg:text-lg mb-0.5 sm:mb-2"
                                     whileHover={{ scale: 1.1 }}
                                     transition={{ duration: 0.2 }}
                                   >
@@ -314,7 +314,7 @@ const SolutionsPage: React.FC = () => {
                                   </motion.p>
                                   
                                   {/* Progress bar effect */}
-                                  <div className="w-full bg-background-secondary rounded-full h-1 sm:h-1.5 overflow-hidden">
+                                  <div className="w-full bg-background-secondary rounded-full h-0.5 sm:h-1.5 overflow-hidden">
                                     <motion.div 
                                       className="h-full bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full"
                                       initial={{ width: 0 }}

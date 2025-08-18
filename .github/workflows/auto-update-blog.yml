@@ -1,0 +1,72 @@
+name: Auto Update Blog from Naver RSS
+
+on:
+  schedule:
+    # 매일 자정에 실행 (UTC 기준, 한국 시간 오전 9시)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 수동 실행도 가능
+
+jobs:
+  check-and-update:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Check for new blog posts
+      id: check-posts
+      run: |
+        # RSS에서 최신 글 확인
+        echo "Checking for new blog posts..."
+        node scripts/check-rss.js
+        if [ $? -eq 0 ]; then
+          echo "new_posts=true" >> $GITHUB_OUTPUT
+        else
+          echo "new_posts=false" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Build and test
+      if: steps.check-posts.outputs.new_posts == 'true'
+      run: |
+        npm run build
+        npm run typecheck
+    
+    - name: Commit and push changes
+      if: steps.check-posts.outputs.new_posts == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "🤖 Auto-update: New blog posts from Naver RSS [skip ci]"
+        git push origin main
+    
+    - name: Deploy to Vercel
+      if: steps.check-posts.outputs.new_posts == 'true'
+      uses: amondnet/vercel-action@v25
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.ORG_ID }}
+        vercel-project-id: ${{ secrets.PROJECT_ID }}
+        vercel-args: '--prod'
+    
+    - name: Success message
+      if: steps.check-posts.outputs.new_posts == 'true'
+      run: |
+        echo "✅ Blog updated and deployed successfully!"
+    
+    - name: No updates message
+      if: steps.check-posts.outputs.new_posts == 'false'
+      run: |
+        echo "ℹ️ No new blog posts found. Skipping update."
