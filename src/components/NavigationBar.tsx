@@ -56,6 +56,19 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, [sticky]);
 
+  // Add/remove body class for mobile menu
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.classList.add('mobile-menu-open');
+    } else {
+      document.body.classList.remove('mobile-menu-open');
+    }
+
+    return () => {
+      document.body.classList.remove('mobile-menu-open');
+    };
+  }, [mobileMenuOpen]);
+
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -85,7 +98,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
   );
 
   return (
-    <motion.nav className={baseStyles} style={{ zIndex: 11000, transform: mobileMenuOpen ? 'none' : undefined }}>
+    <motion.nav className={baseStyles} style={{ zIndex: 99999, transform: mobileMenuOpen ? 'none' : undefined }}>
       <motion.div 
         className="px-4 sm:px-6 lg:px-8 transition-all duration-300 border-b border-border-primary"
         style={{
@@ -189,7 +202,8 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
           <>
             {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[10998] lg:hidden"
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm lg:hidden mobile-menu-backdrop"
+              style={{ zIndex: 99998 }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -198,7 +212,8 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
             />
             {/* Menu */}
             <motion.div 
-              className="lg:hidden border-t border-border-primary bg-background-primary/98 backdrop-blur-xl shadow-lg fixed top-16 left-0 right-0 bottom-0 z-[10999]"
+              className="lg:hidden border-t border-border-primary bg-background-primary/98 backdrop-blur-xl shadow-lg fixed top-16 left-0 right-0 bottom-0 mobile-menu-panel"
+              style={{ zIndex: 99999 }}
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -237,7 +252,8 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
 
       {/* Glow effect when scrolled */}
       <motion.div 
-        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-primary/50 to-transparent z-[10997]"
+        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-primary/50 to-transparent"
+        style={{ zIndex: 99997 }}
         initial={{ opacity: 0 }}
         animate={{ opacity: scrolled ? 1 : 0 }}
         transition={{ duration: 0.5 }}

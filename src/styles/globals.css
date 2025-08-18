@@ -417,6 +417,26 @@ html {
   z-index: 9999 !important;
 }
 
+/* 모바일 메뉴 열림 시 네비게이션 최우선 표시 */
+body.mobile-menu-open nav {
+  z-index: 999999 !important;
+}
+
+body.mobile-menu-open nav * {
+  z-index: inherit !important;
+}
+
+/* 모바일 메뉴가 열렸을 때 다른 모든 요소들보다 위에 표시 */
+body.mobile-menu-open .mobile-menu-backdrop,
+body.mobile-menu-open .mobile-menu-panel {
+  z-index: 999998 !important;
+}
+
+/* 모바일 메뉴 열림 시 채널톡도 네비게이션 아래로 */
+body.mobile-menu-open #ch-plugin {
+  z-index: 999997 !important;
+}
+
 /* 채널톡 버튼 위치 조정 (모바일) */
 @media (max-width: 768px) {
   #ch-plugin-launcher {
