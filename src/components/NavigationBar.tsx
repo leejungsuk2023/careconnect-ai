@@ -186,40 +186,52 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
         
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <motion.div 
-            className="lg:hidden border-t border-border-primary bg-background-primary/98 backdrop-blur-xl shadow-lg"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          >
-            <div className="px-4 py-4 space-y-2">
-              {links.map((link, index) => (
-                <Link
-                  key={index}
-                  href={link.href}
-                  className={cn(
-                    'block px-4 py-3 text-sm font-medium rounded-lg transition-colors duration-200',
-                    'hover:bg-background-secondary hover:text-text-primary',
-                    link.active ? [
-                      'text-text-primary bg-background-secondary',
-                      'border-l-2 border-accent-primary',
-                    ] : 'text-text-secondary'
-                  )}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              
-              {/* Mobile Navigation Only - Actions are in header */}
-              <div className="pt-4 border-t border-border-primary">
-                <p className="text-xs text-text-muted text-center">
-                  메뉴를 선택하세요
-                </p>
+          <>
+            {/* Backdrop */}
+            <motion.div
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9997] lg:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            {/* Menu */}
+            <motion.div 
+              className="lg:hidden border-t border-border-primary bg-background-primary/98 backdrop-blur-xl shadow-lg absolute top-full left-0 right-0 z-[9998]"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <div className="px-4 py-4 space-y-2 max-h-[calc(100vh-4rem)] overflow-y-auto">
+                {links.map((link, index) => (
+                  <Link
+                    key={index}
+                    href={link.href}
+                    className={cn(
+                      'block px-4 py-3 text-sm font-medium rounded-lg transition-colors duration-200',
+                      'hover:bg-background-secondary hover:text-text-primary',
+                      link.active ? [
+                        'text-text-primary bg-background-secondary',
+                        'border-l-2 border-accent-primary',
+                      ] : 'text-text-secondary'
+                    )}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+                
+                {/* Mobile Navigation Only - Actions are in header */}
+                <div className="pt-4 border-t border-border-primary">
+                  <p className="text-xs text-text-muted text-center">
+                    메뉴를 선택하세요
+                  </p>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </motion.div>
 
