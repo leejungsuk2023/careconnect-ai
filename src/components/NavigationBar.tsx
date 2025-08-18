@@ -219,7 +219,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              <div className="px-4 py-20 space-y-2 h-full overflow-y-auto">
+              <div className="px-4 py-32 space-y-2 h-full overflow-y-auto">
                 {links.map((link, index) => (
                   <Link
                     key={index}
