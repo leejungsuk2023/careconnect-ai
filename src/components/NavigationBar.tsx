@@ -187,7 +187,15 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
   };
 
   return (
-    <motion.nav className={baseStyles} style={{ zIndex: 99999, transform: mobileMenuOpen ? 'none' : undefined }}>
+    <motion.nav 
+      className={baseStyles} 
+      style={{ 
+        zIndex: mobileMenuOpen ? 99996 : 99999, 
+        transform: mobileMenuOpen ? 'none' : undefined,
+        opacity: mobileMenuOpen ? 0.3 : 1,
+        pointerEvents: mobileMenuOpen ? 'none' : 'auto'
+      }}
+    >
       <motion.div 
         className="px-4 sm:px-6 lg:px-8 transition-all duration-300 border-b border-border-primary"
         style={{

@@ -442,6 +442,7 @@ body.mobile-menu-open .mobile-menu-panel {
   width: 100vw !important;
   height: 100vh !important;
   z-index: 999998 !important;
+  background: rgba(0, 0, 0, 0.9) !important;
 }
 
 .mobile-menu-panel {
@@ -454,6 +455,21 @@ body.mobile-menu-open .mobile-menu-panel {
   height: 100vh !important;
   z-index: 999999 !important;
   overflow: hidden !important;
+  background: #0D0E14 !important;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* 모바일 메뉴 열림 시 기존 네비게이션 완전 가리기 */
+body.mobile-menu-open nav {
+  opacity: 0.3 !important;
+  pointer-events: none !important;
+  z-index: 99996 !important;
+}
+
+/* 모바일 메뉴 열림 시 모든 기존 요소들 가리기 */
+body.mobile-menu-open > *:not(.mobile-menu-backdrop):not(.mobile-menu-panel) {
+  opacity: 0.1 !important;
+  pointer-events: none !important;
 }
 
 /* 모바일 메뉴 열림 시 body 스크롤 완전 차단 */
