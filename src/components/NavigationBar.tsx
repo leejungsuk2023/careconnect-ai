@@ -131,12 +131,8 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
           <div className="flex flex-col h-full">
-            {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-border-primary">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent-primary to-accent-secondary" />
-                <span className="text-lg font-semibold text-text-primary">CareConnect AI</span>
-              </div>
+            {/* Header - 닫기 버튼만 */}
+            <div className="flex items-center justify-end p-6 border-b border-border-primary">
               <button 
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-2 rounded-lg hover:bg-background-secondary transition-colors"
