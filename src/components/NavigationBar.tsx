@@ -85,7 +85,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
   );
 
   return (
-    <motion.nav className={baseStyles}>
+    <motion.nav className={baseStyles} style={{ zIndex: 11000 }}>
       <motion.div 
         className="px-4 sm:px-6 lg:px-8 transition-all duration-300 border-b border-border-primary"
         style={{
@@ -189,7 +189,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
           <>
             {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9997] lg:hidden"
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[10998] lg:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -198,7 +198,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
             />
             {/* Menu */}
             <motion.div 
-              className="lg:hidden border-t border-border-primary bg-background-primary/98 backdrop-blur-xl shadow-lg fixed top-16 left-0 right-0 bottom-0 z-[9998]"
+              className="lg:hidden border-t border-border-primary bg-background-primary/98 backdrop-blur-xl shadow-lg fixed top-16 left-0 right-0 bottom-0 z-[10999]"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -237,7 +237,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
 
       {/* Glow effect when scrolled */}
       <motion.div 
-        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-primary/50 to-transparent"
+        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-primary/50 to-transparent z-[10997]"
         initial={{ opacity: 0 }}
         animate={{ opacity: scrolled ? 1 : 0 }}
         transition={{ duration: 0.5 }}
