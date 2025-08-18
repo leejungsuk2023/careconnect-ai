@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { cn } from '../utils/cn';
 import Button from './Button';
+import { createPortal } from 'react-dom';
 
 export interface NavLink {
   label: string;
@@ -27,7 +28,14 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
 }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { scrollY } = useScroll();
+
+  // Portal을 위한 마운트 체크
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
 
   // Transform scroll position to background opacity
   const backgroundOpacity = useTransform(
@@ -96,6 +104,87 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
     'w-full min-w-full max-w-full z-50 transition-all duration-300',
     sticky && 'fixed-nav-safe'
   );
+
+  // 모바일 메뉴 컴포넌트
+  const MobileMenu = () => {
+    if (!mounted || !mobileMenuOpen) return null;
+
+    return createPortal(
+      <>
+        {/* Backdrop */}
+        <motion.div
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm lg:hidden mobile-menu-backdrop"
+          style={{ zIndex: 999998 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          onClick={() => setMobileMenuOpen(false)}
+        />
+        {/* Menu Panel */}
+        <motion.div 
+          className="lg:hidden bg-background-primary/99 backdrop-blur-xl shadow-2xl fixed top-0 left-0 right-0 bottom-0 mobile-menu-panel"
+          style={{ zIndex: 999999 }}
+          initial={{ opacity: 0, x: '100%' }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: '100%' }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+        >
+          <div className="flex flex-col h-full">
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 border-b border-border-primary">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent-primary to-accent-secondary" />
+                <span className="text-lg font-semibold text-text-primary">CareConnect AI</span>
+              </div>
+              <button 
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 rounded-lg hover:bg-background-secondary transition-colors"
+              >
+                <svg className="w-6 h-6 text-text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            {/* Menu Items */}
+            <div className="flex-1 px-6 py-8 space-y-3 overflow-y-auto">
+              {links.map((link, index) => (
+                <Link
+                  key={index}
+                  href={link.href}
+                  className={cn(
+                    'block px-6 py-4 text-lg font-medium rounded-xl transition-all duration-200',
+                    'hover:bg-background-secondary hover:text-text-primary hover:scale-105',
+                    link.active ? [
+                      'text-text-primary bg-background-secondary',
+                      'border-l-4 border-accent-primary shadow-lg',
+                    ] : 'text-text-secondary'
+                  )}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+            
+            {/* Footer */}
+            <div className="p-6 border-t border-border-primary">
+              <div className="flex flex-col gap-3">
+                <Button variant="tertiary" size="lg" className="w-full">
+                  로그인
+                </Button>
+                <Button variant="primary" size="lg" className="w-full">
+                  시작하기
+                </Button>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </>,
+      document.body
+    );
+  };
 
   return (
     <motion.nav className={baseStyles} style={{ zIndex: 99999, transform: mobileMenuOpen ? 'none' : undefined }}>
@@ -196,58 +285,6 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
             </div>
           </div>
         </div>
-        
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm lg:hidden mobile-menu-backdrop"
-              style={{ zIndex: 99998 }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              onClick={() => setMobileMenuOpen(false)}
-            />
-            {/* Menu */}
-            <motion.div 
-              className="lg:hidden border-t border-border-primary bg-background-primary/98 backdrop-blur-xl shadow-lg fixed top-0 left-0 right-0 bottom-0 w-screen h-screen"
-              style={{ zIndex: 99999 }}
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
-              <div className="px-4 py-48 space-y-2 h-full overflow-y-auto">
-                {links.map((link, index) => (
-                  <Link
-                    key={index}
-                    href={link.href}
-                    className={cn(
-                      'block px-4 py-3 text-sm font-medium rounded-lg transition-colors duration-200',
-                      'hover:bg-background-secondary hover:text-text-primary',
-                      link.active ? [
-                        'text-text-primary bg-background-secondary',
-                        'border-l-2 border-accent-primary',
-                      ] : 'text-text-secondary'
-                    )}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-                
-                {/* Mobile Navigation Only - Actions are in header */}
-                <div className="pt-4 border-t border-border-primary">
-                  <p className="text-xs text-text-muted text-center">
-                    메뉴를 선택하세요
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </>
-        )}
       </motion.div>
 
       {/* Glow effect when scrolled */}
@@ -258,6 +295,9 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
         animate={{ opacity: scrolled ? 1 : 0 }}
         transition={{ duration: 0.5 }}
       />
+      
+      {/* Mobile Menu Portal */}
+      <MobileMenu />
     </motion.nav>
   );
 };
