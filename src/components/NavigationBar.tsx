@@ -198,13 +198,13 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
             />
             {/* Menu */}
             <motion.div 
-              className="lg:hidden border-t border-border-primary bg-background-primary/98 backdrop-blur-xl shadow-lg absolute top-full left-0 right-0 z-[9998]"
+              className="lg:hidden border-t border-border-primary bg-background-primary/98 backdrop-blur-xl shadow-lg fixed top-16 left-0 right-0 bottom-0 z-[9998]"
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              <div className="px-4 py-4 space-y-2 max-h-[calc(100vh-4rem)] overflow-y-auto">
+              <div className="px-4 py-4 space-y-2 h-full overflow-y-auto">
                 {links.map((link, index) => (
                   <Link
                     key={index}
