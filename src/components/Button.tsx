@@ -173,7 +173,7 @@ const Button: React.FC<ButtonProps> = ({
       whileTap={!isDisabled ? "tap" : undefined}
       variants={buttonVariants}
       {...commonProps}
-      {...props}
+      {...(props as any)}
     >
       {buttonContent}
     </motion.button>

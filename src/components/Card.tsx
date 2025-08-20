@@ -95,7 +95,7 @@ const Card: React.FC<CardProps> = ({
       whileHover={animateOnHover && hover ? "hover" : undefined}
       whileTap={animateOnHover ? "tap" : undefined}
       variants={cardVariants}
-      {...props}
+      {...(props as any)}
     >
       {variant === 'gradient' && (
         <div className="absolute inset-0 rounded-[inherit] bg-gradient-to-br from-gradient-aurora-1/20 via-gradient-aurora-2/10 to-gradient-aurora-3/20 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
