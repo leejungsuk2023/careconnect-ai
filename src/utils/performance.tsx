@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Dynamic import wrapper for lazy loading components
-export const lazyImport = <T extends Record<string, any>>(
+export const lazyImport = <T extends { default: React.ComponentType<any> }>(
   factory: () => Promise<T>
 ) => {
   const LazyComponent = React.lazy(factory);
@@ -99,14 +99,14 @@ export const measurePageLoad = () => {
           response: perfData.responseEnd - perfData.responseStart,
           domProcessing: perfData.domContentLoadedEventStart - perfData.responseEnd,
           domComplete: perfData.loadEventStart - perfData.domContentLoadedEventStart,
-          total: perfData.loadEventEnd - perfData.navigationStart,
+          total: perfData.loadEventEnd - perfData.fetchStart,
         };
         
         console.log('Page Load Metrics:', metrics);
         
         // Send to analytics if needed
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'page_load_performance', {
+        if (typeof (window as any).gtag !== 'undefined') {
+          (window as any).gtag('event', 'page_load_performance', {
             custom_map: {
               total_load_time: metrics.total,
               dom_processing: metrics.domProcessing,
