@@ -1,1 +1,1 @@
-export { default } from './HomePage_SEO';
+export { default } from '../pages-components/HomePage_SEO';

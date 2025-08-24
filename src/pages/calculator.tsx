@@ -1,1 +1,1 @@
-export { default } from './CalculatorPage';
+export { default } from '../pages-components/CalculatorPage';

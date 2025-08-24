@@ -1,1 +1,1 @@
-export { default } from './SolutionsPage';
+export { default } from '../pages-components/SolutionsPage';

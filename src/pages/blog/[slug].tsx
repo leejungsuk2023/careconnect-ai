@@ -1,1 +1,1 @@
-export { default } from '../BlogDetailPage';
+export { default } from '../../pages-components/BlogDetailPage';
