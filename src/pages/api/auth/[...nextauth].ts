@@ -1,14 +1,14 @@
 import NextAuth from "next-auth"
-import Google from "next-auth/providers/google"
-import Facebook from "next-auth/providers/facebook"
+import GoogleProvider from "next-auth/providers/google"
+import FacebookProvider from "next-auth/providers/facebook"
 
 export default NextAuth({
   providers: [
-    Google({
+    GoogleProvider({
       clientId: process.env.AUTH_GOOGLE_ID!,
       clientSecret: process.env.AUTH_GOOGLE_SECRET!,
     }),
-    Facebook({
+    FacebookProvider({
       clientId: process.env.AUTH_FACEBOOK_ID!,
       clientSecret: process.env.AUTH_FACEBOOK_SECRET!,
     }),
