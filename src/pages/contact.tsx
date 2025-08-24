@@ -45,7 +45,7 @@ const ContactPage: React.FC = () => {
               <Input
                 label="병원명"
                 type="text"
-                placeholder="예: 서울대학교병원"
+                placeholder="예: 피부과/성형외과 의원"
               />
               
               <Input
@@ -57,7 +57,7 @@ const ContactPage: React.FC = () => {
               <Input
                 label="연락처"
                 type="tel"
-                placeholder="010-1234-5678"
+                placeholder="070-4647-3263"
               />
               
               <Input
@@ -85,7 +85,7 @@ const ContactPage: React.FC = () => {
                   또는 직접 연락주세요
                 </p>
                 <p className="text-text-secondary mb-4">
-                  📞 02-1234-5678 | ✉️ contact@careconnect-ai.com
+                  📞 070-4647-3263 | ✉️ contact@careconnect-ai.com
                 </p>
                 <Button 
                   variant="tertiary" 
