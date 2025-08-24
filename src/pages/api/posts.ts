@@ -91,8 +91,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       ? [data.rss.channel.item]
       : [];
 
-    // 최신 5개 우선
-    const normalized = await Promise.all(items.slice(0, 5).map(async (item): Promise<any> => {
+    // 모든 RSS 아이템 처리
+    const normalized = await Promise.all(items.map(async (item): Promise<any> => {
       const link = item.link || '';
       const idString = (link.split('/').pop() || '').replace(/[^0-9]/g, '');
       const id = Number(idString) || Math.floor(Math.random() * 1_000_000);
@@ -125,7 +125,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       };
     }));
 
-    // 페이징 계산 (현재는 5개 고정)
+    // 날짜 순으로 정렬 (최신순)
+    normalized.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+    
+    // 페이징 계산
     const totalPosts = normalized.length;
     const totalPages = Math.max(1, Math.ceil(totalPosts / limit));
     const start = (page - 1) * limit;
