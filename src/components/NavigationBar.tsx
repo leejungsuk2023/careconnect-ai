@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { cn } from '../utils/cn';
 import Button from './Button';
+import AuthButtons from './AuthButtons';
 import { createPortal } from 'react-dom';
 
 export interface NavLink {
@@ -166,13 +167,8 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
             
             {/* Footer */}
             <div className="p-6 border-t border-border-primary">
-              <div className="flex flex-col gap-3">
-                <Button variant="tertiary" size="lg" className="w-full">
-                  로그인
-                </Button>
-                <Button variant="primary" size="lg" className="w-full">
-                  시작하기
-                </Button>
+              <div className="flex justify-center">
+                <AuthButtons />
               </div>
             </div>
           </div>
@@ -242,26 +238,12 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
             <div className="flex items-center gap-2 sm:gap-3">
               {/* Desktop Actions */}
               <div className="hidden lg:flex items-center gap-3">
-                {actions || (
-                  <>
-                    <Button variant="tertiary" size="sm">
-                      Sign In
-                    </Button>
-                    <Button variant="primary" size="sm">
-                      Get Started
-                    </Button>
-                  </>
-                )}
+                {actions || <AuthButtons />}
               </div>
               
               {/* Mobile Actions - Always Visible */}
               <div className="lg:hidden flex items-center gap-1.5 sm:gap-2">
-                <Button variant="tertiary" size="sm" className="text-xs px-2 py-1.5 sm:px-3">
-                  로그인
-                </Button>
-                <Button variant="primary" size="sm" className="text-xs px-2 py-1.5 sm:px-3">
-                  시작하기
-                </Button>
+                <AuthButtons />
               </div>
 
               {/* Mobile Menu Button */}

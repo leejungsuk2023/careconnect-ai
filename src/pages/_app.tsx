@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app';
+import { SessionProvider } from 'next-auth/react';
 import dynamic from 'next/dynamic';
 import '../styles/globals.css';
 
@@ -7,11 +8,14 @@ const ChannelTalk = dynamic(() => import('../components/ChannelTalk'), {
   ssr: false,
 });
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ 
+  Component, 
+  pageProps: { session, ...pageProps } 
+}: AppProps) {
   return (
-    <>
+    <SessionProvider session={session}>
       <Component {...pageProps} />
       <ChannelTalk />
-    </>
+    </SessionProvider>
   );
 }
