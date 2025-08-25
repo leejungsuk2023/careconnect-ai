@@ -4,6 +4,7 @@ import Card from '../components/Card';
 import Badge from '../components/Badge';
 import Button from '../components/Button';
 import Input from '../components/Input';
+import DemoRequestModal from '../components/DemoRequestModal';
 import { calculatorApi, CalculatorRequest, CalculatorResponse } from '../services/api';
 import { cn } from '../utils/cn';
 
@@ -33,6 +34,7 @@ const ROILandingPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasCalculated, setHasCalculated] = useState(false);
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
 
   const handleCalculate = async () => {
     // 입력 값 검증
@@ -459,7 +461,12 @@ const ROILandingPage: React.FC = () => {
                       지금 바로 CareConnect AI를 도입하고 병원의 성장을 가속화하세요
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
-                      <Button variant="primary" size="lg" className="w-full sm:w-auto">
+                      <Button 
+                        variant="primary" 
+                        size="lg" 
+                        className="w-full sm:w-auto"
+                        onClick={() => setIsDemoModalOpen(true)}
+                      >
                         무료 데모 신청하기
                       </Button>
                       <Button variant="secondary" size="lg" className="w-full sm:w-auto">
@@ -483,6 +490,12 @@ const ROILandingPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Demo Request Modal */}
+      <DemoRequestModal 
+        isOpen={isDemoModalOpen} 
+        onClose={() => setIsDemoModalOpen(false)} 
+      />
     </div>
   );
 };
