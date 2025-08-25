@@ -10,7 +10,8 @@
     "export": "next export",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "check-rss": "node scripts/check-rss.js"
+    "check-rss": "node scripts/check-rss.js",
+    "deploy": "npm run typecheck && npm run build && git add . && git commit -m 'deploy: Update from Claude Code' && git push origin main"
   },
   "dependencies": {
     "axios": "1.6.2",
