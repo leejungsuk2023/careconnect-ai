@@ -63,26 +63,6 @@ const HomePage: React.FC = () => {
     },
   ];
 
-  const successStories = [
-    {
-      hospital: 'A성형외과',
-      logo: '🏥',
-      metric: '외국인 환자 문의 300% 증가',
-      description: 'AI 컨버세이션 도입 후 3개월 만에 달성',
-    },
-    {
-      hospital: 'B피부과',
-      logo: '🏥',
-      metric: '마케팅 비용 45% 절감',
-      description: 'AI 퍼포먼스 마케팅으로 효율 극대화',
-    },
-    {
-      hospital: 'C피부과',
-      logo: '🏥',
-      metric: '콘텐츠 제작 시간 90% 단축',
-      description: 'AI 콘텐츠 스튜디오로 업무 자동화',
-    },
-  ];
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -431,62 +411,6 @@ const HomePage: React.FC = () => {
             </section>
           </AnimatedSection>
 
-          {/* Success Stories Section */}
-          <AnimatedSection>
-            <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24 relative" aria-labelledby="success-stories-heading">
-              <div className="mx-auto max-w-7xl px-4 sm:px-0">
-                <header className="text-center mb-12 sm:mb-16">
-                  <Badge variant="primary" size="sm" dot className="mb-4">
-                    Success Stories
-                  </Badge>
-                  <h2 id="success-stories-heading" className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-text-primary mb-4 px-4 sm:px-0">
-                    성공스토리
-                  </h2>
-                  <p className="text-base sm:text-lg text-text-secondary max-w-2xl lg:max-w-3xl mx-auto px-4 sm:px-0">
-                    CareConnect AI와 함께 성장한 병원들의 실제 사례를 확인해보세요
-                  </p>
-                </header>
-
-                <motion.div 
-                  className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12"
-                  variants={staggerContainerVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-100px" }}
-                  role="list"
-                  aria-label="성공 사례 목록"
-                >
-                  {successStories.map((story, index) => (
-                    <motion.article key={index} variants={fadeInUpVariants} role="listitem">
-                      <Card variant="elevated" hover className="text-center h-full">
-                        <div className="text-4xl mb-4" aria-hidden="true">{story.logo}</div>
-                        <h3 className="text-lg font-semibold text-text-primary mb-2">
-                          {story.hospital}
-                        </h3>
-                        <p className="text-2xl font-bold text-accent-primary mb-3">
-                          {story.metric}
-                        </p>
-                        <p className="text-sm text-text-muted">
-                          {story.description}
-                        </p>
-                      </Card>
-                    </motion.article>
-                  ))}
-                </motion.div>
-
-                {/* Logo Slider */}
-                <div className="overflow-hidden relative" role="complementary" aria-label="협력 병원 목록">
-                  <div className="flex items-center justify-center gap-12 opacity-50">
-                    {['서울아산병원', '강남세브란스', '분당서울대병원', '건국대병원', '가톨릭대학교병원'].map((hospital, index) => (
-                      <div key={index} className="flex-shrink-0">
-                        <p className="text-text-muted font-medium">{hospital}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </section>
-          </AnimatedSection>
 
           {/* Final CTA Section */}
           <AnimatedSection>
