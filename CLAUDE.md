@@ -45,7 +45,6 @@ git push origin main
 - 요금제: `/pricing`
 - 솔루션: `/solutions`
 - 계산기: `/calculator`
-- 고객사례: `/cases`
 
 ## 🐛 문제 해결
 ### TypeScript 오류 시:

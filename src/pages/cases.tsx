@@ -8,7 +8,6 @@ const CasesPage: React.FC = () => {
     { label: '홈', href: '/' },
     { label: '솔루션', href: '/solutions' },
     { label: '요금제', href: '/pricing' },
-    { label: '고객사례', href: '/cases', active: true },
     { label: '블로그', href: '/blog' },
     { label: '성장 계산기', href: '/calculator' },
     { label: '문의하기', href: '/contact' },

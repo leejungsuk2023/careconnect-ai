@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import NavigationBar from '../components/NavigationBar';
 import Card from '../components/Card';
 import Badge from '../components/Badge';
 import Button from '../components/Button';
@@ -19,15 +18,6 @@ interface CalculatorInputs {
 }
 
 const ROILandingPage: React.FC = () => {
-  const navLinks = [
-    { label: '홈', href: '/' },
-    { label: '솔루션', href: '/solutions' },
-    { label: '요금제', href: '/pricing' },
-    { label: '고객사례', href: '/cases' },
-    { label: '블로그', href: '/blog' },
-    { label: '성장 계산기', href: '/calculator' },
-    { label: '문의하기', href: '/contact' },
-  ];
 
   const [inputs, setInputs] = useState<CalculatorInputs>({
     monthlyPatients: 100,
@@ -127,7 +117,6 @@ const ROILandingPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background-primary mobile-safe-container">
-      <NavigationBar links={navLinks} />
 
       {/* Page Header */}
       <section className="pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8">
