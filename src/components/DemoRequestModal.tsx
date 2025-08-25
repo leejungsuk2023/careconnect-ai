@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import Button from './Button';
 import Input from './Input';
 import Card from './Card';
-import { demoApi, DemoRequest } from '../services/api';
+import { DemoRequest } from '../services/api';
 import { cn } from '../utils/cn';
 
 interface DemoRequestModalProps {
@@ -58,7 +59,29 @@ const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onClose }) 
     setStatus('idle');
 
     try {
-      await demoApi.requestDemo(formData);
+      // EmailJS로 이메일 전송
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          hospital_name: formData.hospitalName,
+          contact_name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          message: formData.message || '데모 신청',
+          form_type: '무료 데모 신청'
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+
+      // Meta Pixel Lead 이벤트 추적
+      if (typeof window !== 'undefined' && (window as any).fbq) {
+        (window as any).fbq('track', 'Lead', {
+          content_name: '무료 데모 신청',
+          content_category: 'Demo Request'
+        });
+      }
+
       setStatus('success');
       setFormData({
         name: '',

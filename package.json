@@ -14,6 +14,7 @@
     "deploy": "npm run typecheck && npm run build && git add . && git commit -m 'deploy: Update from Claude Code' && git push origin main"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "axios": "1.6.2",
     "clsx": "2.0.0",
     "fast-xml-parser": "4.3.2",
