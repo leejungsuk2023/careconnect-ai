@@ -27,9 +27,9 @@ export default function Document() {
             width="1" 
             style={{ display: 'none' }}
             src="https://www.facebook.com/tr?id=1298509411800117&ev=PageView&noscript=1"
-            alt=""
           />
         </noscript>
+        {/* End Meta Pixel Code */}
       </Head>
       <body>
         <Main />
